@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 18247,
+  "stop_reason": "end_turn",
+  "session_id": "36664598-0270-42ab-b99e-d292efeafe0a",
+  "total_cost_usd": 0.11537030000000001,
+  "usage": {
+    "input_tokens": 6,
+    "cache_creation_input_tokens": 23232,
+    "cache_read_input_tokens": 65503,
+    "output_tokens": 1588,
+    "output_tokens_details": {
+      "thinking_tokens": 386
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 23232,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 583,
+        "cache_read_input_tokens": 33210,
+        "cache_creation_input_tokens": 658,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 658
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1588,
+      "cacheReadInputTokens": 65503,
+      "cacheCreationInputTokens": 23232,
+      "webSearchRequests": 0,
+      "costUSD": 0.11537030000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 386,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23232,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 8,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Picture a person working alone in a locked room. They're smart and well read, but they have no phone, no computer and no window to the outside. The room has one slot in the door, and a **menu** is taped beside it:\n\n- \"Look up the booking calendar for a given day\"\n- \"Fetch a page from a machine manual\"\n- \"Book a time slot\"\n\nEach menu line has a short description of what it does and what details to put on the slip.\n\nA student slides a question under the door: *\"Can I use the laser cutter Thursday afternoon?\"*\n\nThe person can't know that from memory, so they write a slip: **\"Look up the booking calendar, Thursday.\"** They push it out through the slot. They can't do anything else. They can only write.\n\nOn the other side is a **runner**, who is not smart but is reliable. The runner reads the slip, walks to the calendar, copies down what it says, and pushes a new slip back in: \"Thursday: laser cutter free 1–3 pm.\"\n\nThe person reads that and decides what comes next. They might answer the student, or write another slip: \"Book 1–2 pm for this student.\" That goes out, a confirmation comes back, and then they write the final reply.\n\n**What this shows**\n- The model never *does* anything. It only writes a request that says which menu item and what details.\n- Your program is the runner. It does the real work and hands back the result as more text.\n- The menu descriptions are the only way the model knows what's possible, which is why writing a clear tool description is a real design job.\n\n**Where the analogy breaks:** a real runner would use common sense. Your program only does what the slip says, so a vague or wrong request gets carried out as written.\n\nQuick check, in your own words: in the makerspace assistant, who decides to look at the calendar, and who actually reads it?\n\nIf you'd like, I can turn this into a short lesson with a worked makerspace example.",
+  "ttft_ms": 3013,
+  "type": "result",
+  "duration_ms": 18910,
+  "uuid": "8cce877e-efd1-46c4-b94d-326a1cbacd44",
+  "ttft_stream_ms": 2637,
+  "time_to_request_ms": 357,
+  "first_content_frame_ms": 2638,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 6,
+      "outputTokens": 1588,
+      "cacheReadInputTokens": 65503,
+      "cacheCreationInputTokens": 23232,
+      "webSearchRequests": 0,
+      "costUSD": 0.11537030000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 386,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 23232,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:55.018Z"
+}

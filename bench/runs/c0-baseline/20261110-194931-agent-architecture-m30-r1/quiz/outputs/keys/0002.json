@@ -1,0 +1,41 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "In a workflow the program's code fixes the order of steps in advance; the model only fills in a step, here writing the answer. In a, c and d the model chooses the next step or when to stop, which makes them agents.",
+      "distractors": {"a": "M7", "c": "M7", "d": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": "the model",
+      "accepted": ["model", "the language model", "the llm", "llm", "the model decides"],
+      "rationale": "An agent owns its control flow: the model chooses the next action and when to stop. In a workflow, the program code decides. Answering the program or code describes a workflow."
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "Booking has the same known steps in the same order every time, so code can fix them: predictable, cheaper and easier to test. Options a, b and d are open-ended or depend on intermediate findings, which is where an agent's flexibility pays off.",
+      "distractors": {"a": "M8", "b": "M8", "d": "M8"}
+    },
+    {
+      "id": "q4",
+      "answer": 600,
+      "tolerance": 0,
+      "rationale": "The agent makes 5 - 2 = 3 extra calls per request, and 3 x 200 = 600. Agents trade extra calls (cost and latency) for flexibility, which matters under a small budget."
+    },
+    {
+      "id": "q5",
+      "answer": "workflow",
+      "accepted": ["a workflow", "it is a workflow", "workflow."],
+      "rationale": "This is routing, a workflow pattern: the model classifies, but the code and the predefined paths decide what runs next. The model does not direct its own process or choose tools freely. Answering agent shows M7: thinking that any use of a model to make a choice makes the system an agent."
+    },
+    {
+      "id": "q6",
+      "answer": "a",
+      "rationale": "Choose the simplest design that works: a workflow where steps are known (predictable, cheaper, easier to test) and an agent only where the path cannot be known ahead. Agents usually cost more calls (b), workflows can also use tools (c), and agents can be given tools with sensible limits (d).",
+      "distractors": {"b": "M9", "c": "M10"}
+    }
+  ]
+}

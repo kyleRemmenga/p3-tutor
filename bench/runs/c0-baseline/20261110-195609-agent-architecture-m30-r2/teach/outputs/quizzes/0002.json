@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant's program calls the model for step 3 of a request. The model's reply must depend on the tool results from steps 1 and 2. What makes those results available to the model?",
+      "options": [
+        {"id": "a", "text": "The program includes them in the context it sends for this call"},
+        {"id": "b", "text": "The model stores them inside itself after reading them in step 1"},
+        {"id": "c", "text": "The context window keeps them alive between separate model calls"},
+        {"id": "d", "text": "The tool keeps sending them to the model whenever it is asked"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A teammate proposes pasting all 300 pages of every machine manual into the context at the start of each request, since the model's window is large enough to hold them. Give one reason, in a sentence, why this is still a poor design."
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "The assistant should greet a returning student by their preferred machine and skip the safety explanation if they already passed training. Where should that information live between visits?",
+      "options": [
+        {"id": "a", "text": "Inside the model, which learns it by talking to the student"},
+        {"id": "b", "text": "In the system prompt, rewritten by hand after every visit"},
+        {"id": "c", "text": "In a per-student stored record that the program loads at the start"},
+        {"id": "d", "text": "In the context window, which stays open until the student returns"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A request takes 4 model calls. The system prompt and tool descriptions total 1,000 tokens and are sent in every call. The question is 100 tokens. After call 1, a tool returns a 3,000-token manual excerpt that stays in the list for the rest of the request. Ignoring the model's own replies, how many tokens does the model read in call 4?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one or two sentences, what does a search_manuals tool do for the assistant, and why is that better than loading the whole manual into context?"
+    }
+  ]
+}

@@ -1,0 +1,36 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The model keeps nothing between calls or sessions. Memory across sessions is the program saving the fact and loading it into the next context. Options a and d show the belief that the model remembers or learns by itself; b treats a bigger window as memory.",
+      "distractors": {"a": "M3", "b": "M3", "d": "M3"}
+    },
+    {
+      "id": "q2",
+      "answer": 11000,
+      "tolerance": 0,
+      "rationale": "The context starts at 2,000 tokens and three results of 3,000 tokens each stay in it: 2,000 + 3 x 3,000 = 11,000. The fourth call re-reads all of it. 9,000 forgets the starting 2,000; 5,000 or 8,000 count only some of the results."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "Retrieval puts only the few best chunks into the context, so cost per call stays low and the answer comes from the right text. Pasting everything (b) may not fit and is re-paid on every call; the first pages (c) do not hold the answers; the model cannot recall the manuals from training (d), and the makerspace manuals were never in it."
+    },
+    {
+      "id": "q4",
+      "answer": "A bigger window only lets more fit in one call; the context is empty at the start of each session, so something must save the facts and load them next time.",
+      "accepted": [
+        "The window does not persist between sessions; a new session starts empty, so the program must save notes and load them.",
+        "A large window is not memory: nothing is kept after a session ends unless the program stores it."
+      ],
+      "rationale": "Full credit needs the idea that context is not kept between sessions (a window is capacity, not storage) and that saved notes loaded by the program are the fix. Mentioning only cost is partial. Saying the model would remember with a big enough window shows M3."
+    },
+    {
+      "id": "q5",
+      "answer": "c",
+      "rationale": "A note the assistant later trusts for a safety decision should be written by trusted code from the training records, not set by a typed claim. Saving on the student's word (a), or after the student merely confirms the same claim (b), still lets the student grant themselves access. Saving to chat history (d) does not give a reliable record either."
+    }
+  ]
+}

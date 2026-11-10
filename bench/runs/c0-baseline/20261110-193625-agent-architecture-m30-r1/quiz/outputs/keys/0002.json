@@ -1,0 +1,50 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "In an agent the model owns the control flow: it chooses each next action from the results so far and decides when to stop. In a, b and d the code fixes the path (a fixed sequence, a routing step, a chain of calls), even though a model is called inside it; those are workflows. Picking a, b or d shows the belief that using a model or tools makes a system an agent.",
+      "distractors": {"a": "M7", "b": "M7", "d": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": "In a workflow the code written in advance decides the steps and their order; in an agent the model decides them at run time.",
+      "accepted": [
+        "In a workflow the developer's code owns the control flow; in an agent the model does.",
+        "Workflows follow predefined code paths, while an agent's model chooses its own next steps and tools.",
+        "Code decides the next step in a workflow; the model decides it in an agent."
+      ],
+      "rationale": "Full credit needs both sides: code (the developer) decides in a workflow, the model decides in an agent. Saying only that agents use tools, loop or are smarter is wrong, since workflows can call models and tools too. Naming only one side is partial."
+    },
+    {
+      "id": "q3",
+      "answer": "b",
+      "rationale": "When the steps and their order are known in advance, a fixed workflow is the better choice: the code runs the same path every time, which is predictable, cheaper and easier to test. A model call can sit inside a workflow to read the message (so c is wrong), tools do not require an agent loop (a), and workflows often include model calls (d).",
+      "distractors": {"a": "M7", "c": "M7", "d": "M9"}
+    },
+    {
+      "id": "q4",
+      "answer": 4,
+      "tolerance": 0,
+      "rationale": "The agent makes one model call per tool request plus one for the final answer: 5 + 1 = 6. The workflow makes 2, so the agent makes 6 - 2 = 4 more. The tool runs themselves are done by the program and are not model calls. An answer of 6 compares nothing, and 5 forgets the final-answer call."
+    },
+    {
+      "id": "q5",
+      "answer": "d",
+      "rationale": "An open-ended request like d needs a different set of lookups depending on what is found (machine choice, training, calendar, manuals), so the path cannot be written in advance; that is where letting the model own the control flow pays for its extra cost. a, b and c each follow a known short path (book, look up, cancel) that a workflow handles more cheaply and predictably. Picking one of them shows the belief that an agent is the better default (M8).",
+      "distractors": {"a": "M8", "b": "M8", "c": "M8"}
+    },
+    {
+      "id": "q6",
+      "answer": "A fixed workflow makes only the model calls the task needs, so it costs less and behaves the same every time.",
+      "accepted": [
+        "It is cheaper, because there are no extra model calls deciding the next step.",
+        "It is predictable and consistent, and easier to test.",
+        "It uses fewer model calls and tokens, so it fits a small budget.",
+        "The cost per request is known in advance and does not grow with extra loop steps."
+      ],
+      "rationale": "Any one valid reason is full credit: lower cost (fewer model calls, no loop overhead), predictable and consistent behavior, lower latency, or easier testing. A reason that is about the agent being unable to use tools or being less capable is wrong. Saying only that workflows are better, with no reason, is partial at best."
+    }
+  ]
+}

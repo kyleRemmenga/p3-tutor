@@ -1,0 +1,38 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cheat sheet: context and memory in an agent</title>
+<style>
+  body { max-width: 40rem; margin: 0 auto; padding: 2rem 1.25rem; font: 17px/1.55 Georgia, serif; color: #1f1d1a; background: #fffdf8; }
+  h1 { font-size: 1.6rem; } h2 { font-size: 1.1rem; margin-top: 1.8rem; }
+  table { width: 100%; border-collapse: collapse; font-size: 0.92rem; }
+  th, td { text-align: left; vertical-align: top; padding: 0.4rem 0.5rem; border-bottom: 1px solid #e4dfd4; }
+  @media (prefers-color-scheme: dark) { body { background: #171614; color: #e9e5dc; } th, td { border-color: #36332e; } }
+</style>
+</head>
+<body>
+<h1>Context and memory in an agent</h1>
+<p>From <a href="../lessons/0001-context-and-memory-in-an-agent.html">lesson 1</a>.</p>
+<h2>Where information can live</h2>
+<table>
+<tr><th>Place</th><th>Lasts</th><th>Cost</th><th>Use for</th></tr>
+<tr><td>Context window</td><td>One call</td><td>Paid on every call it is sent in</td><td>System prompt, tool descriptions, current task</td></tr>
+<tr><td>Transcript</td><td>One session</td><td>Grows each step; resent each call</td><td>Messages and tool results so far</td></tr>
+<tr><td>Saved notes</td><td>Across sessions</td><td>Only when loaded</td><td>Per-student facts, progress</td></tr>
+<tr><td>Document store (retrieval)</td><td>Permanent</td><td>Only the retrieved chunks</td><td>Manuals</td></tr>
+</table>
+<h2>Rules of thumb</h2>
+<ul>
+<li>The model sees only its context; the program decides what goes in.</li>
+<li>Total input over a run grows faster than the number of steps, because each call resends the history.</li>
+<li>Bigger window: delays the hard limit, not context rot, and not the bill.</li>
+<li>Fixes for a full window: clear old tool results, compact (summarize and restart), use a sub-agent.</li>
+<li>Nothing survives a session unless saved outside the window and loaded back.</li>
+<li>Retrieval quality caps answer quality: test the search on real questions first.</li>
+</ul>
+<h2>Sorting questions</h2>
+<p>Needed on nearly every call? Always in context. Depends on the student or must outlast the session? Saved notes. Long and needed only sometimes? Retrieve on demand.</p>
+</body>
+</html>

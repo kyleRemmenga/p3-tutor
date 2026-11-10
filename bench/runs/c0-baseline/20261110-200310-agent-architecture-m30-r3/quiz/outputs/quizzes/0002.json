@@ -1,0 +1,62 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow?",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "What is the main difference between a workflow and an agent?",
+      "options": [
+        {"id": "a", "text": "A workflow uses tools, while an agent only writes text replies"},
+        {"id": "b", "text": "In a workflow code fixes the steps, while in an agent the model does"},
+        {"id": "c", "text": "A workflow calls the model once, while an agent calls it repeatedly"},
+        {"id": "d", "text": "In a workflow the model picks the steps, while in an agent code does"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A makerspace program always runs these steps in this order: (1) the model pulls the machine name and date out of the student's message, (2) the code calls check_calendar with them, (3) the model writes a reply from the result. Which description fits best?",
+      "options": [
+        {"id": "a", "text": "An agent, because the model is called more than once per request"},
+        {"id": "b", "text": "An agent, because the program uses a tool to look up the calendar"},
+        {"id": "c", "text": "A workflow, because the code fixes the steps and their order"},
+        {"id": "d", "text": "A workflow, because the model never decides anything in any step"}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "A fixed workflow always makes exactly 3 model calls per request. An agent handling one request makes 1 model call for each tool request it issues, plus 1 call for its final answer, and on this request it issues 4 tool requests. How many more model calls does the agent make than the workflow?",
+      "unit": "calls"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Every booking must check the student's training status, then check the slot is free, then write the booking, in that order, with no exceptions. Why is a fixed workflow the better choice for this part of the assistant?",
+      "options": [
+        {"id": "a", "text": "A workflow can handle any request, including ones nobody planned for"},
+        {"id": "b", "text": "An agent is not able to call a tool that writes a booking"},
+        {"id": "c", "text": "A workflow lets the model skip a check when it seems safe"},
+        {"id": "d", "text": "The steps are known upfront, so code can enforce them cheaply"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O4",
+      "stem": "A student asks the assistant: \"My print keeps warping on the 3D printer. Can I fix it, and is the printer free tomorrow so I can retry?\" In one sentence, why does answering this kind of question favour an agent over a fixed workflow?"
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Your team argues that the whole makerspace assistant should be an agent because agents are more powerful. In one or two sentences, give one reason to keep some parts as fixed workflows instead."
+    }
+  ]
+}

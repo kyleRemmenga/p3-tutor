@@ -1,0 +1,62 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows, agents and who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Four designs for the makerspace assistant are described below. Which one is an agent rather than a workflow?",
+      "options": [
+        {"id": "a", "text": "Code always calls check_calendar, then search_manuals, then asks the model for one reply"},
+        {"id": "b", "text": "Code asks the model to label each question, then runs the one handler for that label"},
+        {"id": "c", "text": "The model picks each next tool from the results so far and decides when to stop"},
+        {"id": "d", "text": "Code makes three model calls in a fixed order, each using the output of the last"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "short",
+      "objective": "O4",
+      "stem": "In one sentence: in terms of who decides the next step, what is the difference between a workflow and an agent?"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Every booking request to your assistant goes the same way: read the machine, date and time from the student's message, check the calendar, book the slot if it is free, and send a confirmation. Which design fits best, and why?",
+      "options": [
+        {"id": "a", "text": "An agent, because any task that uses tools needs a loop to run them"},
+        {"id": "b", "text": "A fixed workflow, because the steps and their order are known in advance"},
+        {"id": "c", "text": "An agent, because only a model in a loop can read a student's message"},
+        {"id": "d", "text": "A fixed workflow, because workflows run without calling a language model"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "Take one booking request. As a fixed workflow, the code runs check_calendar and book_machine itself and makes exactly 2 model calls (one to read the request, one to write the confirmation). As an agent, the model requests five tools one at a time, and then writes the final answer; each model call ends with one tool request or the final answer. How many more model calls does the agent make than the workflow on this request?",
+      "unit": "model calls"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Which request to the makerspace assistant is the best candidate for an agent, because you cannot list its steps in advance?",
+      "options": [
+        {"id": "a", "text": "\"Book the 3D printer for me on Friday at 2 pm.\""},
+        {"id": "b", "text": "\"What is the maximum material thickness for the laser cutter?\""},
+        {"id": "c", "text": "\"Please cancel my booking for the band saw tomorrow.\""},
+        {"id": "d", "text": "\"I want to make a 20 cm acrylic sign by next week; what do I need?\""}
+      ]
+    },
+    {
+      "id": "q6",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Your sponsor gave the team a small model budget. In one sentence, give one reason a fixed workflow is the better choice for a task whose steps you can list in advance."
+    }
+  ]
+}

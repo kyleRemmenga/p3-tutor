@@ -1,0 +1,53 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "In a workflow, code written in advance fixes the sequence of steps; the model is called inside some steps, but it does not choose the path. Calling the model twice (a) or using a tool (c) does not make a system an agent, and an agent does not need several tools (d). What makes it an agent is the model deciding the next step, which does not happen here.",
+      "distractors": {"a": "M7", "c": "M7", "d": "M7"}
+    },
+    {
+      "id": "q2",
+      "answer": "In a workflow, the code decides the order of steps in advance; in an agent, the model decides at run time what to do next, including which tool to call and when to stop.",
+      "accepted": [
+        "Workflow: the program's code controls the flow. Agent: the model controls the flow.",
+        "In a workflow the developer's code sets the path; in an agent the model chooses its own steps.",
+        "A workflow follows predefined code paths, while an agent lets the model direct its own process and tool use."
+      ],
+      "rationale": "The answer must say who owns the control flow: code (fixed in advance) for a workflow, the model (decided during the run) for an agent. Distinguishing them by number of tools, number of model calls or model size is wrong (M7)."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "When the steps and their order never change, a fixed workflow does the job with fewer model calls and the same path every time, so it is cheaper and more predictable. Needing several tools (a) does not require an agent, since code can call several tools in a fixed order. Varied wording (b) is handled by a model call inside a step, and letting a model reorder steps (c) is a risk here, not a benefit, because the order must not change.",
+      "distractors": {"a": "M7", "b": "M8", "c": "M8"}
+    },
+    {
+      "id": "q4",
+      "answer": 30,
+      "tolerance": 0,
+      "rationale": "The agent costs 5 x $0.01 = $0.05 per question and the workflow 2 x $0.01 = $0.02, a difference of $0.03 per question, or $30 over 1,000 questions. Answering 50 or 20 gives one design's total rather than the difference."
+    },
+    {
+      "id": "q5",
+      "answer": "a",
+      "rationale": "An agent pays off when the steps cannot be listed in advance, as in open-ended troubleshooting where each finding decides what to look up or ask next. The other three have a known, short path (check one date, send one fixed email, read one table) that a fixed workflow or a single call handles at lower cost.",
+      "distractors": {"b": "M8", "c": "M8", "d": "M8"}
+    },
+    {
+      "id": "q6",
+      "answer": "Predictability and cost: the model may take different or extra steps, so the path is less predictable and costs more model calls and time than a fixed sequence.",
+      "accepted": [
+        "predictability",
+        "cost",
+        "it costs more",
+        "more model calls and more latency",
+        "consistency, because the model may choose a different path each time",
+        "speed",
+        "reliability, because the model could skip or reorder a step"
+      ],
+      "rationale": "Any one real cost counts: less predictable or consistent behaviour, more model calls (higher cost per request), or more delay. Answering that you give up flexibility is wrong here, because the steps are already known so flexibility gains nothing. Saying you give up capability or flexibility is wrong here: the steps are already known, so flexibility gains nothing."
+    }
+  ]
+}

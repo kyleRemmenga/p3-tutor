@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. What makes a system an agent is the loop: the model picks an action, the program runs it, and the result comes back for the next step. A longer prompt or a bigger model changes what one call can do, but not the structure."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right. The model only outputs a request that names check_calendar and gives its arguments (laser cutter, tomorrow's date). The program around it does the actual call. Keep this in mind when you write your own tool descriptions."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "You chose to leave it running and trust it to get there eventually. That is tempting because the agent does sometimes recover after a few tries. But here it has made the same edit and seen the same failing test 40 times, so more steps add nothing new. The program needs a stopping condition, such as a step limit that ends the loop and reports what happened (option b). On a small budget, every extra loop also costs money."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "Your count of 4 is right. The reasoning is off, though: you wrote that the model 'runs' each tool. It doesn't. In each call the model only outputs a request for one tool. The program runs the tool and sends the result back, which starts the next call. So the count is 3 tool requests + 1 final answer = 4 model calls, and the three tool runs are not model calls at all."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Right, and you gave both parts: the result goes back in as the next input, and the model uses it to decide what to do next. Your group-chat comparison fits: the model only 'sees' the result because it arrives as a new message. That is also why a long run fills the context."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The name does help, but it is only part of what the model has. The program also gives it each tool's description (what it does) and its parameters, and the model picks the tool whose description fits the request. A name alone can mislead: a tool called check_calendar might be for room bookings rather than machine bookings. This is why the descriptions you write for the makerspace tools matter so much."
+    }
+  ],
+  "summary": "You have the core of the agent loop down: what makes an agent, what the model outputs when it uses a tool, and how results flow back as the next input. Two ideas need work. First, the program runs the tools and the model only requests them (your q4 wording slipped here). Second, the agent loop needs a stopping condition because a stuck agent will not fix itself (q3). Next step: pick one makerspace tool, such as check_calendar, and write its description and parameters in a few lines. Then explain how the model would use them to choose it, and what the program does if the loop never ends."
+}

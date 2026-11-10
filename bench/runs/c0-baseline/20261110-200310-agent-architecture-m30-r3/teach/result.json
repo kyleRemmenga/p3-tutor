@@ -1,0 +1,152 @@
+{
+  "duration_api_ms": 169144,
+  "stop_reason": "end_turn",
+  "session_id": "c8c5e670-18cc-435f-8fc1-ca6eb5ed28c7",
+  "total_cost_usd": 0.47922989999999993,
+  "usage": {
+    "input_tokens": 14,
+    "cache_creation_input_tokens": 58416,
+    "cache_read_input_tokens": 230131,
+    "output_tokens": 18685,
+    "output_tokens_details": {
+      "thinking_tokens": 607
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 58416,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 580,
+        "cache_read_input_tokens": 66188,
+        "cache_creation_input_tokens": 2864,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2864
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 14,
+      "outputTokens": 18685,
+      "cacheReadInputTokens": 230131,
+      "cacheCreationInputTokens": 58416,
+      "webSearchRequests": 0,
+      "costUSD": 0.4435550999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 607,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 58416,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 43873,
+      "outputTokens": 2575,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.0356748,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 532,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 21,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The 30-minute lesson on O3 is written, along with a quiz and key. I haven't opened the lesson in a browser or counted its words, so the length is an estimate: I planned it at about 3,500 words, and the 30-minute range is 2,700 to 6,750.\n\n- **Lesson:** `lessons/0001-context-and-memory.html`. By the end, you can place each piece of information in the makerspace assistant in one of three places: the context, saved notes, or a store the assistant searches.\n- **Sections:** it starts with a short warm-up on the agent loop. Then it covers the context window and its cost, and what the program re-sends between steps (the model itself keeps nothing). Next come trimming, compacting and offloading when the context fills, saved notes between sessions, and retrieval over the manuals. It closes with a worked example, a practice task and a summary, with three figures and short checks that give feedback as you answer.\n- **Quiz:** `quizzes/0002.json` has five items on the same objective, with its key in `keys/0002.json`. None repeats a practice question from the lesson. Ask me for it when you want to take it.\n- **Other files:** I added `RESOURCES.md` and updated `NOTES.md`.\n\n**Sources:** I only saw the search results for the Anthropic pages, not the full pages. I kept the claims to what those summaries supported, and the lesson gives no window sizes or prices. The \"Test it with others\" section names the r/LLMDevs subreddit without a link, and I haven't verified that community. I haven't written a cheat sheet or a learning record, because you haven't shown anything yet that would justify one.\n\nDo you want me to point you to an agent-building community, or would you rather skip that? You can also ask me for a shorter or longer version of the lesson.",
+  "ttft_ms": 6574,
+  "type": "result",
+  "duration_ms": 157555,
+  "uuid": "3b1f940d-f3a0-45e2-934a-8e3d4e96c9ec",
+  "ttft_stream_ms": 6111,
+  "time_to_request_ms": 466,
+  "first_content_frame_ms": 6112,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 14,
+      "outputTokens": 18685,
+      "cacheReadInputTokens": 230131,
+      "cacheCreationInputTokens": 58416,
+      "webSearchRequests": 0,
+      "costUSD": 0.4435550999999999,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 607,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 58416,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 43873,
+      "outputTokens": 2575,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 3,
+      "costUSD": 0.0356748,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 532,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:55.018Z"
+}

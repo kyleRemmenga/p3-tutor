@@ -1,0 +1,39 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "Each model call is separate; the program keeps the transcript and sends the earlier messages, including tool results, with every call. The model stores nothing itself (a), is not connected to tools (b), and does not run them (d, M4).",
+      "distractors": {"a": "M3", "b": "M4", "d": "M4"}
+    },
+    {
+      "id": "q2",
+      "answer": 15000,
+      "tolerance": 0,
+      "rationale": "Call 1 sends 3,000; call 2 sends 3,000 + 2,000 = 5,000; call 3 sends 5,000 + 2,000 = 7,000. Total 15,000. Answering 7,000 counts only the final size and misses that the history is resent on every call (M7)."
+    },
+    {
+      "id": "q3",
+      "answer": "d",
+      "rationale": "Nothing in a context window survives the session; the fact must be saved outside it on Monday and loaded into Friday's context. A bigger window (a) only helps within a session, an instruction (b) has nothing to draw on, and the model has no recall across sessions (c).",
+      "distractors": {"a": "M8", "b": "M3", "c": "M3"}
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "Everything in the context is paid for on every call, and recall of the context degrades as it fills (context rot). Retrieval keeps only the relevant chunks in. It does not train the model (a), tokens in the context always count (b), and answers still need checking (c).",
+      "distractors": {"a": "M9", "b": "M7"}
+    },
+    {
+      "id": "q5",
+      "answer": "It summarizes the conversation so far and starts a new context window that begins with the summary.",
+      "accepted": [
+        "It summarizes the history and continues in a fresh context window with that summary",
+        "It replaces the long history with a summary of the important points and continues from that",
+        "summarizes the context and restarts with the summary"
+      ],
+      "rationale": "Compaction shrinks the context by summarizing what matters (decisions, open problems) and continuing in a fresh window that starts from the summary. Simply cutting off old messages, or ending the conversation, is not compaction."
+    }
+  ]
+}

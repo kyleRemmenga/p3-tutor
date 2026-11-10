@@ -1,0 +1,49 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The difference is who owns the control flow: in a workflow, code written in advance fixes the steps and their order; in an agent, the model decides the next step as it goes. Both can use tools (a) and both can call the model several times (c); (d) reverses the two.",
+      "distractors": {"a": "M7", "c": "M8"}
+    },
+    {
+      "id": "q2",
+      "answer": "c",
+      "rationale": "The code fixes the order of the steps, so this is a workflow, even though it calls the model twice and uses a tool. Calling the model more than once (a) or using a tool (b) does not make a system an agent; what matters is who chooses the next step. Option (d) is wrong because the model does decide things inside steps, such as which machine and date the student meant.",
+      "distractors": {"a": "M8", "b": "M7"}
+    },
+    {
+      "id": "q3",
+      "answer": 2,
+      "tolerance": 0,
+      "rationale": "The agent makes 4 calls for its 4 tool requests plus 1 for the final answer, 5 in all. The workflow makes 3, so the agent makes 2 more. An answer of 1 comes from forgetting the final-answer call (4 - 3); an answer of 5 is the agent's total, not the difference."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "When the steps and their order are known in advance and never change, code can enforce them every time, with fewer model calls and no chance of the model skipping a check. A workflow does not handle unplanned requests well (a, M9), and a model can call a writing tool, so (b) is false; (c) describes the model owning the control flow, which is what a fixed rule must avoid.",
+      "distractors": {"a": "M9"}
+    },
+    {
+      "id": "q5",
+      "answer": "The steps needed cannot be known in advance, because which tools to call and in what order depends on what each result shows, so the model has to choose the next step.",
+      "accepted": [
+        "The needed steps depend on the question and on earlier results, so the model must decide the next step.",
+        "The path is unpredictable (manual lookup, calendar, or both), so the model needs to choose which tools to use and when.",
+        "Because the sequence of steps is not fixed and depends on intermediate results, the model must decide what to do next."
+      ],
+      "rationale": "Full credit: the steps or their order are not known upfront and depend on the question or earlier results, so the model must choose them. Saying only that the question is hard, long or has two parts is partial or wrong, since a fixed workflow can also run two known steps. Saying an agent is needed because it uses tools shows M7."
+    },
+    {
+      "id": "q6",
+      "answer": "When the steps are known and fixed, a workflow is cheaper (fewer model calls), more predictable and easier to test, so an agent adds cost and risk without adding benefit.",
+      "accepted": [
+        "Fixed workflows cost less and behave more predictably when the steps are always the same.",
+        "A workflow guarantees required steps, such as a check before booking, always happen in order; an agent might skip or repeat them.",
+        "Agents use more model calls, which matters on a small budget, so use workflows for steps that never vary."
+      ],
+      "rationale": "Full credit: one valid reason tied to fixed, known steps: lower cost, predictability or reliability, easier testing, or guaranteed order of required checks. Saying only that workflows are simpler, without a link to cost or reliability, is partial. Saying workflows are more flexible or capable shows M9."
+    }
+  ]
+}

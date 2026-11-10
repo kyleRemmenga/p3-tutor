@@ -1,0 +1,55 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in the makerspace assistant",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your assistant's program makes its third model call in a request. Which statement about what the model has available on that call is correct?",
+      "options": [
+        {"id": "a", "text": "It keeps its own memory of calls one and two between calls"},
+        {"id": "b", "text": "It has only what the program sent in this call's context"},
+        {"id": "c", "text": "It reads the booking system directly, without any tool call"},
+        {"id": "d", "text": "It holds the whole manual library permanently after training"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A request takes ten steps, and the program re-sends the whole message list at every step. In one sentence, why does the cost of the last step exceed the cost of the first step?"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student closes the chat on Monday and opens a new chat on Wednesday. The team wants the assistant to know the student is trained on the laser cutter. What is the right design?",
+      "options": [
+        {"id": "a", "text": "Choose a model with a larger window, which keeps old chats"},
+        {"id": "b", "text": "Keep the Monday chat open on the server and send it again"},
+        {"id": "c", "text": "Write the training status to storage and load it into context"},
+        {"id": "d", "text": "Tell the model in the system prompt to remember every student"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team has a 600-page library of machine manuals and a small model budget. Which approach to answering a student's question about one machine fits best?",
+      "options": [
+        {"id": "a", "text": "Put all 600 pages into the system prompt on every call"},
+        {"id": "b", "text": "Search the manuals and put only the best few passages in context"},
+        {"id": "c", "text": "Put the first 20 pages of each manual into the system prompt"},
+        {"id": "d", "text": "Ask the student to paste the right manual page into the chat"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "The booking calendar already records every reservation. A teammate proposes also saving each student's current bookings as a note for the assistant to read next visit. Give one reason this could cause a problem."
+    }
+  ]
+}

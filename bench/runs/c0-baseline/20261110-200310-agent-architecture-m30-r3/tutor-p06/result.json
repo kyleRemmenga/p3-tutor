@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 41467,
+  "stop_reason": "end_turn",
+  "session_id": "ecb66240-4298-4b9c-8b2d-1f6bbca8e93d",
+  "total_cost_usd": 0.1367585,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 25687,
+    "cache_read_input_tokens": 100845,
+    "output_tokens": 2391,
+    "output_tokens_details": {
+      "thinking_tokens": 953
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 25687,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 577,
+        "cache_read_input_tokens": 35251,
+        "cache_creation_input_tokens": 1072,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 1072
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2391,
+      "cacheReadInputTokens": 100845,
+      "cacheCreationInputTokens": 25687,
+      "webSearchRequests": 0,
+      "costUSD": 0.1367585,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 953,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25687,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 10,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Here's a new analogy, with no code.\n\n**Picture a friend helping you cook over text message.** Your friend knows a lot about cooking, but they're not in your kitchen. They can only send texts. You're standing in the kitchen.\n\nYou ask, \"Can I make pancakes?\" Your friend can't see your fridge, so they don't guess. They text: **\"Check the fridge for eggs and milk, then tell me what you find.\"** You open the fridge, look, and reply: **\"Two eggs, no milk.\"** Your friend reads that and answers: \"Make them with water, or skip them.\"\n\nHere is how the pieces match up.\n- **The friend is the model.** It can only write text. It never touches the fridge.\n- **You are the program around the model.** You do the real action, then pass the result back as a new message.\n- **The text asking you to check the fridge is the tool call.** It's a request: which job, and what details. It does nothing until someone carries it out.\n- **Your reply is the tool result.** The friend needs it to decide the next step. Without it, they'd be guessing again.\n\nNow add one detail. Before you started, your friend got a **menu card** listing what you can do: \"check the fridge,\" \"check the pantry,\" \"look up a recipe.\" Each line says what the job does and what it needs. The friend has never seen inside your fridge. They pick jobs only by reading that card. This is why a tool's written description matters so much.\n\nWhere the analogy bends: a real model has no memory of the earlier texts. The program re-sends the whole conversation each time, like handing your friend the full thread again before every reply.\n\nQuick check, in your own words: if the menu card said only \"stuff,\" what would go wrong?\n\nI haven't tied this to quiz 0001, since your answers are still ungraded. I can grade both attempts whenever you're ready.",
+  "ttft_ms": 8320,
+  "type": "result",
+  "duration_ms": 42303,
+  "uuid": "4db1999d-6da1-4d2c-809f-30468a804736",
+  "ttft_stream_ms": 7990,
+  "time_to_request_ms": 420,
+  "first_content_frame_ms": 7990,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 2391,
+      "cacheReadInputTokens": 100845,
+      "cacheCreationInputTokens": 25687,
+      "webSearchRequests": 0,
+      "costUSD": 0.1367585,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 953,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25687,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:55.018Z"
+}

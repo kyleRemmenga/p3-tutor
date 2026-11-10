@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 14520,
+  "stop_reason": "end_turn",
+  "session_id": "32018bc9-8010-460a-b83c-4919608af2e6",
+  "total_cost_usd": 0.0984956,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 18932,
+    "cache_read_input_tokens": 89016,
+    "output_tokens": 1385,
+    "output_tokens_details": {
+      "thinking_tokens": 86
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 18932,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 532,
+        "cache_read_input_tokens": 29226,
+        "cache_creation_input_tokens": 342,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 342
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1385,
+      "cacheReadInputTokens": 89016,
+      "cacheCreationInputTokens": 18932,
+      "webSearchRequests": 0,
+      "costUSD": 0.0984956,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 86,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 18932,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 9,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Not quite. Language models don't remember earlier conversations on their own, so your assistant won't recall last week's chat unless you build that in.\n\n**Why it's tempting:** chatbots feel like they remember, because inside one conversation they do. That isn't the model remembering. The app sends the whole conversation so far to the model on every call. The model starts each call fresh and only knows what's in that text, which is its context.\n\n**A concrete example:** a student tells the assistant on Monday, \"I finished the laser cutter safety training.\" On Friday a new session starts. The model gets the system instructions and the student's new question, and nothing from Monday. If it answers as if it knew, it's guessing.\n\n**What the memory looks like in your project:** your program has to do the remembering.\n1. When the student says something worth keeping, such as training status, the program saves it (a database row or a JSON file, which you can do in Python).\n2. At the start of the next session, the program looks the student up and puts the relevant facts into the model's context.\n3. The model then \"remembers\" only because you handed it the facts again.\n\nThe same holds for the model's training. It learned patterns before your students ever spoke to it, and your conversations don't change it.\n\nThis matters for your budget, too. Everything you re-supply costs tokens on every call, so you'll want to save short facts, not whole transcripts. That's the heart of the \"what to keep in context and what to save between sessions\" decision in your mission.\n\nQuick check: for the training-status example, which part does the remembering, the model or your program? And what would your program need to do at the start of a session?\n\nIf you'd like, I can write a 15-minute lesson on context and memory next. It's the next step in your mission.",
+  "ttft_ms": 2212,
+  "type": "result",
+  "duration_ms": 15191,
+  "uuid": "e66f7480-0377-4fe2-86fc-0e8fd85356d1",
+  "ttft_stream_ms": 1820,
+  "time_to_request_ms": 441,
+  "first_content_frame_ms": 1821,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1385,
+      "cacheReadInputTokens": 89016,
+      "cacheCreationInputTokens": 18932,
+      "webSearchRequests": 0,
+      "costUSD": 0.0984956,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 86,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 18932,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:55.018Z"
+}

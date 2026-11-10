@@ -50,6 +50,9 @@ When no length is asked for, use the one `PREFERENCES.md` implies, or 15 minutes
 
 - Teach only the knowledge the skill needs, and make it easy to take in: plain words, one new term at a time, each defined where it first appears, using the terms in `GLOSSARY.md` when it exists.
 - Then make the skill stick with effortful practice: recall, worked examples followed by faded ones, and applying the idea to a new case.
+- Scatter mini quizzes through the lesson: a short check, one to three questions, after every section, and another halfway through the longer sections, so the learner tests themselves every few minutes instead of only at the end.
+  Aim for at least one per 500 words of explanation, and count their words in the budget; for a 30-minute lesson that is eight or more checks, not three.
+  Vary the type (multiple choice, predict the output, fill in the blank, explain it back) and keep each one answerable from the text just read.
 - Every practice question gets feedback at once: why the right answer is right, and why each tempting wrong answer is wrong.
 - For a multiple-choice question, give every option the same number of words (and characters, if possible), vary which position holds the right one, and never give it away by formatting or order.
 - The lesson's practice questions are never the quiz items: the quiz checks what the practice built, so it needs fresh questions.
@@ -72,6 +75,10 @@ Keep the template's look and change the content, not the system.
   Most lessons need two to four.
 - Draw them as inline SVG: a `viewBox`, the labels as text inside the figure, colors from the template's CSS variables or `currentColor` so they work in dark mode, a `<title>`, and a `<figcaption>` that says what to notice.
 - Keep labels legible on a phone, where a figure shrinks to the screen's width: a `viewBox` about 640 units wide with labels of 18 units or more, or a vertical layout when there are many parts.
+- Fit every label inside its box.
+  At `font-size="18"` a character is about 10 units wide, so a label needs about 10 units per character plus 12 units of padding each side: a 130-unit box holds at most 10 characters per line, a 190-unit box 16, a 210-unit box 18.
+  Split a longer label across lines (one `<text>` per line, 24 units apart), shorten it, or widen the box; never let text run past a box edge or the `viewBox`.
+  Use `text-anchor="middle"` at the box's center x for labels inside boxes.
 - Use a table for a comparison, and a code block for code.
 - Never load an image from the web; draw it, or describe it and link to the page that shows it.
 
@@ -105,6 +112,7 @@ Check the lesson once against this list, and fix anything that fails:
 - `<meta name="p3-minutes">` holds the requested minutes and `<meta name="p3-objective">` the objective id.
 - No stylesheet, script, font or image comes from the web.
 - The length is near the budget, judging by your section plan.
+- In every figure, each label's length (about 10 units per character) is smaller than its box's width minus 24, and nothing crosses the `viewBox` edge.
 - Every external link came from this session's search results or fetched pages.
 - The practice questions are not the quiz items, and the lesson gives away no quiz answer.
 - The lesson opens with the win and closes with the primary source and the reminder to ask you questions.

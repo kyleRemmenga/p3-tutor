@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 10621,
+  "stop_reason": "end_turn",
+  "session_id": "3092606b-1c13-4863-a02f-24eae9090021",
+  "total_cost_usd": 0.0874788,
+  "usage": {
+    "input_tokens": 4,
+    "cache_creation_input_tokens": 18326,
+    "cache_read_input_tokens": 32368,
+    "output_tokens": 1093,
+    "output_tokens_details": {
+      "thinking_tokens": 240
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 18326,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 583,
+        "cache_read_input_tokens": 21732,
+        "cache_creation_input_tokens": 7230,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 7230
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 1093,
+      "cacheReadInputTokens": 32368,
+      "cacheCreationInputTokens": 18326,
+      "webSearchRequests": 0,
+      "costUSD": 0.0874788,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 240,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 18326,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I can't give you the letter for q3. I don't hand out quiz answers before a quiz is graded, and that includes retakes, even for practice. Your two attempts, `submissions/s1.json` and `submissions/s2.json`, haven't been graded yet, so the quiz is still closed. Telling you which option is wrong, or which one I'd lean toward, would settle it just as much as giving you the letter.\n\nHere is a way to work it out yourself. The stem gives you a symptom: 40 steps, the same edit, the same failing test, and everything still in context. For each of the four options, ask two questions:\n\n1. What would this change about what happens at step 41?\n2. Does it change the agent program (the code around the model), or only what the model sees or is told?\n\nWrite one line per option, in your own words. If you send them to me, I'll tell you whether your reasoning holds together, though I still won't say which option is correct. Also look at the stem's wording: \"best safeguard\" and \"change to the agent program\" both matter.\n\nTwo options are open to you now:\n- Send me your answers to the whole quiz and I'll grade it. Then we can go through q3 properly, using your own answers.\n- If you want a short lesson on how an agent loop is kept under control, I can write one. It comes right before the context and memory material that's next on your plan.\n\nWhich one do you want?",
+  "ttft_ms": 2322,
+  "type": "result",
+  "duration_ms": 11118,
+  "uuid": "a85bc34c-c550-4843-8abe-faea9880d8de",
+  "ttft_stream_ms": 1692,
+  "time_to_request_ms": 449,
+  "first_content_frame_ms": 1692,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 4,
+      "outputTokens": 1093,
+      "cacheReadInputTokens": 32368,
+      "cacheCreationInputTokens": 18326,
+      "webSearchRequests": 0,
+      "costUSD": 0.0874788,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 240,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 18326,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:55.018Z"
+}

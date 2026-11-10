@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "In a makerspace assistant run, the model's third call correctly uses a calendar result that came back during the second step. What makes that result available to the model at the third call?",
+      "options": [
+        {"id": "a", "text": "The model keeps its earlier calls in its own internal storage"},
+        {"id": "b", "text": "The calendar tool stays connected to the model between calls"},
+        {"id": "c", "text": "The program includes the earlier messages in the third call"},
+        {"id": "d", "text": "The model re-runs the calendar tool before the third call"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "An assistant run makes three model calls. The first call's input is 3,000 tokens. The program resends the whole transcript each time, and each of the first two tool results adds 2,000 tokens to it. Counting only input tokens, how many tokens does the run send to the model in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student finished band-saw training on Monday and returns on Friday for a new session. The assistant must know about the training without asking. Which design achieves that?",
+      "options": [
+        {"id": "a", "text": "Choose a model with a bigger context window than the current one"},
+        {"id": "b", "text": "Add the instruction \"remember every student\" to the system prompt"},
+        {"id": "c", "text": "Rely on the model recalling Monday's session when asked about it"},
+        {"id": "d", "text": "Save a record on Monday and load it into Friday's context"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team has twelve machine manuals totalling about 400,000 tokens, and questions usually need one or two pages. Why is retrieving a few relevant chunks per question usually better than putting all twelve manuals in the context?",
+      "options": [
+        {"id": "a", "text": "It makes the model understand the manuals better in training"},
+        {"id": "b", "text": "It lets the model read the manuals without any tokens used"},
+        {"id": "c", "text": "It removes the need to check whether the answer is right"},
+        {"id": "d", "text": "It cuts tokens paid on every call and reduces context rot"}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one sentence, what does compaction do to a long agent conversation?"
+    }
+  ]
+}

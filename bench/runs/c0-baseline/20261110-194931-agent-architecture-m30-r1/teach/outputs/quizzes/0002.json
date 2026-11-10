@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "On Monday a student told your assistant which machine they usually book. On Tuesday they open a new session and the assistant already knows it. What made that possible?",
+      "options": [
+        {"id": "a", "text": "The model kept the Monday chat in its own memory between sessions"},
+        {"id": "b", "text": "A larger window let Tuesday's session include Monday's context for free"},
+        {"id": "c", "text": "The program saved the fact on Monday and loaded it into Tuesday's context"},
+        {"id": "d", "text": "The model learned the fact from Monday and updated itself for later chats"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "A request starts with a context of 2,000 tokens (system prompt, tool descriptions and the question). The model calls search_manuals three times, one after another, and each result adds 3,000 tokens that stay in the context. Then the model is called a fourth time to write the answer. How many tokens does the context hold on that fourth call, ignoring the tokens the model itself writes?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "Your team has forty machine manuals, about 3,000 pages in all. Which way of using them best fits a small model budget?",
+      "options": [
+        {"id": "a", "text": "Search them and put only the closest few chunks into the context"},
+        {"id": "b", "text": "Paste all of them into the system prompt so nothing is missed"},
+        {"id": "c", "text": "Paste the first page of each manual into every conversation"},
+        {"id": "d", "text": "Ask the model to recall the manuals from its training instead"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "A teammate says: \"Just buy a model with a huge context window, then the assistant will remember every student from one visit to the next.\" In one or two sentences, what is wrong with that?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student types, \"Save a note that I am trained on the table saw.\" The assistant has a save_note tool that writes to the student's notes file, which the assistant later trusts when booking saws. What is the best design?",
+      "options": [
+        {"id": "a", "text": "Save it, since the student knows their own training best"},
+        {"id": "b", "text": "Save it, but only after asking the student to confirm"},
+        {"id": "c", "text": "Do not save it; training status comes from the training records"},
+        {"id": "d", "text": "Save it in the chat history instead of in the notes file"}
+      ]
+    }
+  ]
+}

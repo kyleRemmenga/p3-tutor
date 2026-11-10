@@ -1,0 +1,33 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "b",
+      "rationale": "The model is stateless: it only sees the context sent with each call. Option a is the belief that the model remembers between calls."
+    },
+    {
+      "id": "q2",
+      "answer": "the last step re-sends a longer history, so it has more input tokens to pay for",
+      "accepted": ["longer context", "the context has grown", "more tokens are sent at the last step", "the history has grown so more input tokens are billed", "it includes all earlier messages and results"],
+      "rationale": "Each step adds to the list and the whole list is sent again, so later calls have more input tokens and cost more."
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "Information that must outlive a session needs storage outside the context, loaded when the student returns. A larger window (a) only holds more within one conversation.",
+      "distractors": {"a": "M3"}
+    },
+    {
+      "id": "q4",
+      "answer": "b",
+      "rationale": "Retrieval keeps the long library in a store and brings in only the few relevant passages, saving window space and tokens. Putting everything in the prompt costs tokens on every call."
+    },
+    {
+      "id": "q5",
+      "answer": "the saved copy can go stale and disagree with the calendar",
+      "accepted": ["stale", "out of date", "it could be outdated", "the note may no longer match the real bookings", "duplicates data that the calendar already holds and can disagree", "the note could conflict with the calendar"],
+      "rationale": "A copy of data held elsewhere can become outdated; the assistant should read the calendar through a tool instead."
+    }
+  ]
+}

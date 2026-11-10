@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 26247,
+  "stop_reason": "end_turn",
+  "session_id": "869832d1-1495-482d-a402-473e85e17e3f",
+  "total_cost_usd": 0.1381047,
+  "usage": {
+    "input_tokens": 10,
+    "cache_creation_input_tokens": 25555,
+    "cache_read_input_tokens": 134947,
+    "output_tokens": 2237,
+    "output_tokens_details": {
+      "thinking_tokens": 814
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 25555,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 570,
+        "cache_read_input_tokens": 35458,
+        "cache_creation_input_tokens": 733,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 733
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 10,
+      "outputTokens": 2237,
+      "cacheReadInputTokens": 134947,
+      "cacheCreationInputTokens": 25555,
+      "webSearchRequests": 0,
+      "costUSD": 0.1381047,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 814,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25555,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 11,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Here's a new analogy, with no code.\n\n**Picture a smart manager locked in a windowless office.** They can think and write, but they can't leave the room, use a phone or open a browser. Under the door is a slot, and on the other side is an errand runner.\n\nOn the manager's desk is a **menu of errands** the runner can do. Each entry has a name and a plain-language description, like \"Look up a train time: give me a station and a date.\" The manager has never seen how the runner does any errand. The descriptions are all they know.\n\nSomeone slides a question under the door: \"Can I catch a train to Boston tomorrow morning?\" The manager can't answer from memory, so they write a note: **\"Please run 'Look up a train time' with station = Boston, date = tomorrow.\"** They slide it out and wait.\n\nThe manager doesn't do the errand. The runner reads the note, does the errand and slides the result back: \"9:10 and 10:40.\" The manager reads it and either writes another errand note or writes the final answer.\n\nSo:\n- **Tool calling is the manager writing a note.** It's a request to do something, not the doing.\n- **The runner is your program.** It does the errand and returns the result.\n- **The menu is your tool descriptions.** The manager picks errands by reading them, so a vague description means the wrong errand gets picked.\n\nWhere the analogy breaks: the manager here would remember earlier notes on their own. A real model doesn't. Each time, the program hands it the whole pile of papers so far.\n\nI kept this general on purpose. Quiz 0001 is still ungraded, and I don't want to settle any of its items. Once it's graded, we can map this analogy onto the makerspace assistant.\n\nQuick check, in your own words: in the analogy, who goes to the train system, and what does the manager write down?",
+  "ttft_ms": 4963,
+  "type": "result",
+  "duration_ms": 27171,
+  "uuid": "4eb9a957-b6ff-4ec9-b1d7-a6cadd25bf8c",
+  "ttft_stream_ms": 4627,
+  "time_to_request_ms": 349,
+  "first_content_frame_ms": 4628,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 10,
+      "outputTokens": 2237,
+      "cacheReadInputTokens": 134947,
+      "cacheCreationInputTokens": 25555,
+      "webSearchRequests": 0,
+      "costUSD": 0.1381047,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 814,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25555,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:55.018Z"
+}

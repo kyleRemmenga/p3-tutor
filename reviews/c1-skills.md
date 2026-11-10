@@ -17,13 +17,13 @@ Keep every heading as it is, because `p3 check` reads them, and add a round by c
 
 **My thoughts:**
 
-TODO
+Overall I was impressed. I thought that the way the examples were presented was helpful for my learning. Additonally I think that the quizes that were scattered throughout were helpful to make sure I was still on the right track. I didn't love the brown color scheme that was chosen. I don't have a suggestion for what it should be either, we'll have to keep experimenting. I would add more mini quizzes throughout, additionally I would get rid of this brown.
 
 **What changed:**
 
-- Kind: TODO
-- Files: TODO
-- Why: TODO
+- Kind: modified skill
+- Files: tutor/.claude/skills/teach/references/LESSONS.md
+- Why: You found the quizzes scattered through the lesson helpful and asked for more, so the teach skill's lesson guide now asks for a mini quiz after every section and about one per 500 words of explanation.
 
 ### Round 2
 
@@ -31,13 +31,13 @@ TODO
 
 **My thoughts:**
 
-TODO
+This run seemed to fix nothing. I still like the quizzes and the graphics conceptually. However, the brown color scheme is still here which I don't like. Additionally, on this run many graphics have text overflowing out of the sides and various small scaling things throwing them off. I think roung 1 performed better.
 
 **What changed:**
 
-- Kind: TODO
-- Files: TODO
-- Why: TODO
+- Kind: modified skill
+- Files: tutor/.claude/skills/teach/references/LESSONS.md
+- Why: You saw figure text overflowing its boxes and scaling off, so the teach skill's lesson guide now gives a label-width rule (about 10 units per character at size 18, with padding), says to split or shorten long labels, and adds a figure-fit check to the closing list.
 
 ## Major review
 

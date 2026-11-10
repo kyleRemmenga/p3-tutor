@@ -1,0 +1,33 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "a",
+      "rationale": "Each model call is a fresh start; the model sees only the context the program builds, so the program must include earlier results."
+    },
+    {
+      "id": "q2",
+      "answer": "Every token is re-read and paid for on every call, and more text lowers the model's accuracy (context rot), so it is costly and less reliable.",
+      "accepted": ["it costs too much", "too expensive because every call re-sends it", "context rot", "more tokens means higher cost and worse recall", "it wastes the attention budget and money"],
+      "rationale": "Either cost (every token is read on every call) or context rot (accuracy falls as the context grows) is a valid reason; a bigger window only raises the hard limit."
+    },
+    {
+      "id": "q3",
+      "answer": "c",
+      "rationale": "Information that must survive between sessions has to be stored outside the model and loaded back into the context by the program."
+    },
+    {
+      "id": "q4",
+      "answer": 4100,
+      "tolerance": 0,
+      "rationale": "Call 4 re-reads everything in the list: 1,000 + 100 + 3,000 = 4,100 tokens."
+    },
+    {
+      "id": "q5",
+      "answer": "It finds the few relevant passages and puts only those in the context, which saves tokens and avoids context rot.",
+      "accepted": ["it retrieves only the relevant chunks instead of the whole manual", "it looks up the relevant pages, which is cheaper and keeps the context small"],
+      "rationale": "Retrieval is memory as lookup: only the best few chunks pay the token cost on each call, and a smaller context keeps recall better."
+    }
+  ]
+}
