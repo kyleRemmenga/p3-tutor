@@ -1,0 +1,56 @@
+{
+  "id": "0002",
+  "objective": "O3",
+  "title": "Context and memory in an agent",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student chats with your assistant on Monday. On Tuesday the program starts a new session and sends only the system prompt and the student's new message: \"Book the same slot I had yesterday.\" What can the model do?",
+      "options": [
+        {"id": "a", "text": "Recall Monday's chat, because the model keeps every conversation it had"},
+        {"id": "b", "text": "Look up Monday's chat itself, because the model can open stored files"},
+        {"id": "c", "text": "Use only the text it was sent, so it must ask unless a record was loaded"},
+        {"id": "d", "text": "Rely on a larger window, which would hold yesterday's chat for it"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O3",
+      "stem": "In one request the system prompt and tool descriptions take 1,000 tokens and the student's question takes 100 tokens. The model is called 4 times. After each of the first three calls, a tool result of 2,000 tokens is appended to the message list. Ignore the model's own output and caching. How many input tokens are sent across all 4 calls in total?",
+      "unit": "tokens"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A returning student starts a session. Your saved store holds records for all 400 students, and the window should stay small. What should the program put into the window at session start?",
+      "options": [
+        {"id": "a", "text": "Only this student's saved record, as a short line of text"},
+        {"id": "b", "text": "All 400 students' records, so the model can compare them"},
+        {"id": "c", "text": "The complete manuals for every machine in the makerspace"},
+        {"id": "d", "text": "Nothing, since the model already remembers returning students"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O3",
+      "stem": "In one or two sentences: why does a long message history make every later model call in the same request more expensive?"
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O3",
+      "stem": "A student asks how to change the bandsaw blade. Your manual search returns chunks from three different machines' manuals, all titled \"Changing the blade\", and the model describes the wrong machine's steps. Which change most directly fixes this?",
+      "options": [
+        {"id": "a", "text": "Switch to a model with a larger context window"},
+        {"id": "b", "text": "Add the machine name and section heading to every chunk"},
+        {"id": "c", "text": "Add a system prompt line telling the model to be careful"},
+        {"id": "d", "text": "Return twenty chunks per search so the answer is included"}
+      ]
+    }
+  ]
+}

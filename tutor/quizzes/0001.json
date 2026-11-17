@@ -1,0 +1,56 @@
+{
+  "id": "0001",
+  "objective": "O1",
+  "title": "The agent loop",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "In a tool-using agent, which part of the system actually executes a tool such as a database query?",
+      "options": [
+        {"id": "a", "text": "The model, while it generates its reply"},
+        {"id": "b", "text": "The API server, before it returns the reply"},
+        {"id": "c", "text": "The application code that runs the loop"},
+        {"id": "d", "text": "The tool definition sent with the request"}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "numeric",
+      "objective": "O1",
+      "stem": "A task needs three tool calls made one after another, and then a final text answer. How many requests does the loop send to the model in total?",
+      "unit": "requests"
+    },
+    {
+      "id": "q3",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "After your code runs a requested tool, what must the next request contain so the model can use the result?",
+      "options": [
+        {"id": "a", "text": "Only the tool result, since the model remembers the rest"},
+        {"id": "b", "text": "The full history plus a tool_result with the matching id"},
+        {"id": "c", "text": "The full history plus the result as a new user question"},
+        {"id": "d", "text": "Only the original question plus the tool's name"}
+      ]
+    },
+    {
+      "id": "q4",
+      "type": "short",
+      "objective": "O1",
+      "stem": "Name one reason a production agent loop should have a maximum number of iterations."
+    },
+    {
+      "id": "q5",
+      "type": "mcq",
+      "objective": "O1",
+      "stem": "Your loop receives a reply whose stop_reason is end_turn. What should the loop do?",
+      "options": [
+        {"id": "a", "text": "Exit the loop and present the reply's text"},
+        {"id": "b", "text": "Send one more request to confirm it is done"},
+        {"id": "c", "text": "Run the last tool again and then continue"},
+        {"id": "d", "text": "Wait for a tool_use block to appear first"}
+      ]
+    }
+  ]
+}

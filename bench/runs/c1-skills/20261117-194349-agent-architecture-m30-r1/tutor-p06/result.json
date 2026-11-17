@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 13723,
+  "stop_reason": "end_turn",
+  "session_id": "8406eb54-d390-484f-8b2f-44cc7cb43413",
+  "total_cost_usd": 0.0821752,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 14615,
+    "cache_read_input_tokens": 78992,
+    "output_tokens": 1580,
+    "output_tokens_details": {
+      "thinking_tokens": 467
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 14615,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 582,
+        "cache_read_input_tokens": 24604,
+        "cache_creation_input_tokens": 637,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 637
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1580,
+      "cacheReadInputTokens": 78992,
+      "cacheCreationInputTokens": 14615,
+      "webSearchRequests": 0,
+      "costUSD": 0.0821752,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 467,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 14615,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 7,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "Here's a new analogy: a clerk locked in a windowless room.\n\n**The idea.** The language model can only write text. It can't look at your booking calendar, click anything, or run anything. Tool calling is a way for it to get things done anyway: it writes a *request* for an action, and something else carries out that request.\n\n**The analogy.** Picture a booking clerk locked in a windowless room with a mail slot. The clerk knows a lot but can see nothing outside. Taped to the wall is a menu of services the front desk offers, for example \"Check calendar: needs a machine and a date\" and \"Book slot: needs a machine, a date and a time\".\n\nA student's question slides in through the slot: \"Is the laser cutter free Friday?\" The clerk can't check, so they write a slip: \"Check calendar: laser cutter, Friday.\" They push it back out through the slot.\n\nA runner outside, who is the program you write, reads the slip and goes to the real calendar. The runner finds \"free 2–4pm\" and slides that back in. The clerk reads it and writes the final answer: \"Yes, 2–4pm.\"\n\n**What maps to what.**\n- The clerk is the model.\n- The wall menu is the tool descriptions.\n- The slip is the tool call.\n- The runner is your program.\n- The result slip is the tool result.\n\nThe clerk never touches the calendar. The runner does, and the runner can refuse or limit what gets done.\n\n**Where it breaks down.** A real clerk stays in the room with a continuous memory. The model has none: every time a slip comes in, it is handed the whole conversation again from the start. That is why every step is a separate model call, and why cost grows with each step.\n\nQuick check: if the clerk writes \"Book slot: laser cutter, Friday 3pm,\" has anything been booked yet? Who does the booking?",
+  "ttft_ms": 1407,
+  "type": "result",
+  "duration_ms": 14532,
+  "uuid": "e9554f7b-2ea2-4035-86b7-563f08515e1f",
+  "ttft_stream_ms": 1137,
+  "time_to_request_ms": 535,
+  "first_content_frame_ms": 1138,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 1580,
+      "cacheReadInputTokens": 78992,
+      "cacheCreationInputTokens": 14615,
+      "webSearchRequests": 0,
+      "costUSD": 0.0821752,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 467,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 14615,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:53.975Z"
+}

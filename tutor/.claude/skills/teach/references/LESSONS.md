@@ -63,6 +63,7 @@ When no length is asked for, use the one `PREFERENCES.md` implies, or 15 minutes
 Keep the template's look and change the content, not the system.
 
 - Typography first: a readable serif body, a line length of 60 to 75 characters, generous spacing, and headings that make the structure scannable.
+- Keep the template's cool palette (near-white and slate neutrals with a blue accent); do not switch to brown, beige or other warm earth tones.
 - Few colors, each with a meaning: one accent for links and key terms, one for misconception warnings.
   The template works in light and dark mode and prints well; keep it that way.
 - Side remarks go in margin notes and asides, so the main line stays clean.

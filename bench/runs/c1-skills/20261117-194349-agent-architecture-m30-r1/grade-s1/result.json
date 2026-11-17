@@ -1,0 +1,120 @@
+{
+  "duration_api_ms": 21442,
+  "stop_reason": "end_turn",
+  "session_id": "ef8ba5c0-c016-4fc4-b062-acc4d702aa5b",
+  "total_cost_usd": 0.1446361,
+  "usage": {
+    "input_tokens": 8,
+    "cache_creation_input_tokens": 25632,
+    "cache_read_input_tokens": 93721,
+    "output_tokens": 3272,
+    "output_tokens_details": {
+      "thinking_tokens": 168
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 25632,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 361,
+        "cache_read_input_tokens": 33641,
+        "cache_creation_input_tokens": 2617,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 2617
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 3272,
+      "cacheReadInputTokens": 93721,
+      "cacheCreationInputTokens": 25632,
+      "webSearchRequests": 0,
+      "costUSD": 0.1446361,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 168,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25632,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 14,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "I graded submission s1 for quiz 0001: 2 correct, 2 partial, 2 wrong. The grades are in `grades/0001-s1.json`.\n\n- **q1, q3:** correct. You have the agent loop and the need for a stopping condition.\n- **q2, q4:** wrong. The model only outputs a request as text. The program runs the tool and calls the model again, so q4 was 4 model calls, not 1.\n- **q5:** partial. Sending the result back to the model is right. You left out why: so the model can use it to pick its next step or write the final answer.\n- **q6:** partial. The model does pick from the tool descriptions it is given, but it doesn't remember earlier sessions on its own. Memory has to be stored by the program and put back into the model's input.\n\nI also wrote `learning-records/0003-model-requests-program-runs-tools.md` and updated `NOTES.md`. Submission s2 is still ungraded.\n\n**Next step:** redraw your laser cutter trace as a table with one row per model call. Give it two columns: what the model outputs, and what the program does. Count the rows.",
+  "ttft_ms": 981,
+  "type": "result",
+  "duration_ms": 21741,
+  "uuid": "c27b3ef3-ce51-4af5-b748-e4558c2e81f1",
+  "ttft_stream_ms": 699,
+  "time_to_request_ms": 234,
+  "first_content_frame_ms": 700,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 8,
+      "outputTokens": 3272,
+      "cacheReadInputTokens": 93721,
+      "cacheCreationInputTokens": 25632,
+      "webSearchRequests": 0,
+      "costUSD": 0.1446361,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 168,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 25632,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:53.975Z"
+}

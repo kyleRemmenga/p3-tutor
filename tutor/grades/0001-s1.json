@@ -1,0 +1,17 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {"id": "q1", "verdict": "correct", "misconception": null,
+     "feedback": "Correct. Your code runs the tool, which is why your code also controls permissions and errors."},
+    {"id": "q2", "verdict": "correct", "misconception": null,
+     "feedback": "Correct. Requests = tool calls + 1: three tool-use replies, then one more request to get the answer."},
+    {"id": "q3", "verdict": "correct", "misconception": null,
+     "feedback": "Correct. Each request is stateless, so the full history goes back every time, with the tool_result carrying the matching id."},
+    {"id": "q4", "verdict": "correct", "misconception": null,
+     "feedback": "Correct. Beyond cost and time, the cap also bounds a malformed tool that keeps the loop at tool_use."},
+    {"id": "q5", "verdict": "correct", "misconception": null,
+     "feedback": "Correct. Only tool_use continues the loop; end_turn means the text is the answer."}
+  ],
+  "summary": "5 of 5 correct. You have the loop down: who runs tools, what each request carries, when it stops and why to cap it. Next step: ask for a lesson on workflows versus agents, or on writing a tool definition."
+}

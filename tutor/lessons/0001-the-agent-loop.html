@@ -1,0 +1,255 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="p3-minutes" content="10">
+  <meta name="p3-objective" content="O1">
+  <title>The agent loop: how an LLM uses tools</title>
+  <style>
+    :root {
+      --bg: #fbfcfe; --text: #14181f; --muted: #5a6472; --rule: #dde3ec; --accent: #1d5fd1; --accent-soft: #e8f0fd;
+      --warn: #8c2f39; --warn-soft: #f9eaec; --ok: #2f6b3a; --ok-soft: #e7f2e9; --code-bg: #eef2f7;
+      --serif: Charter, "Bitstream Charter", "Iowan Old Style", "Sitka Text", Cambria, Georgia, serif;
+      --sans: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+      --mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+    }
+    @media (prefers-color-scheme: dark) {
+      :root { --bg: #12151a; --text: #e6eaf0; --muted: #98a3b3; --rule: #2b323d; --accent: #7fb0ff; --accent-soft: #1a2536;
+        --warn: #f0a3ac; --warn-soft: #2f1f22; --ok: #9fd3a8; --ok-soft: #1c2a1f; --code-bg: #1b2029; }
+    }
+    * { box-sizing: border-box; }
+    html { font-size: 19px; -webkit-text-size-adjust: 100%; }
+    body { margin: 0; background: var(--bg); color: var(--text); font-family: var(--serif); line-height: 1.6; }
+    main { max-width: 40rem; margin: 0 auto; padding: 3rem 1.25rem 4rem; }
+    a { color: var(--accent); text-decoration-thickness: 1px; text-underline-offset: 2px; }
+    h1, h2 { line-height: 1.25; font-weight: 600; }
+    h1 { font-size: 2.1rem; margin: 0.25rem 0 1rem; }
+    h2 { font-size: 1.45rem; margin: 3rem 0 0.75rem; }
+    .kicker, .label, .meta, .section-time, figcaption, summary, nav.toc, footer.closing { font-family: var(--sans); }
+    .kicker { font-size: 0.78rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--muted); }
+    .lead { font-size: 1.15rem; }
+    .meta { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; font-size: 0.85rem; color: var(--muted);
+            border-top: 1px solid var(--rule); border-bottom: 1px solid var(--rule); padding: 0.5rem 0; margin: 1.5rem 0; }
+    nav.toc { font-size: 0.9rem; margin: 1.5rem 0 2rem; }
+    nav.toc ol { padding-left: 1.2rem; margin: 0.4rem 0 0; }
+    .section-time { font-size: 0.8rem; font-weight: 400; color: var(--muted); margin-left: 0.4rem; white-space: nowrap; }
+    dfn { font-style: normal; font-weight: 600; }
+    .box { border-radius: 6px; padding: 1rem 1.25rem; margin: 1.75rem 0; }
+    .box > :first-child { margin-top: 0; } .box > :last-child { margin-bottom: 0; }
+    .label { display: block; font-size: 0.72rem; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase; margin-bottom: 0.4rem; }
+    .mission { background: var(--accent-soft); } .mission .label { color: var(--accent); }
+    .misconception { background: var(--warn-soft); border-left: 4px solid var(--warn); } .misconception .label { color: var(--warn); }
+    .worked, .summary { border: 1px solid var(--rule); }
+    .worked ol { padding-left: 1.3rem; }
+    figure { margin: 2rem 0; } figure svg { display: block; width: 100%; height: auto; }
+    figcaption { font-size: 0.85rem; color: var(--muted); margin-top: 0.5rem; }
+    code, pre { font-family: var(--mono); font-size: 0.85em; background: var(--code-bg); border-radius: 4px; }
+    code { padding: 0.1em 0.3em; }
+    pre { padding: 1rem; overflow-x: auto; line-height: 1.45; } pre code { padding: 0; background: none; font-size: 1em; }
+    .check { border: 1px solid var(--rule); border-radius: 6px; padding: 1rem 1.25rem; margin: 1.75rem 0; }
+    .check .label { color: var(--accent); } .check p { margin: 0.25rem 0; }
+    .choices { list-style: none; padding: 0; margin: 0.75rem 0 0; display: grid; gap: 0.5rem; }
+    .choices button { width: 100%; text-align: left; font: inherit; font-size: 0.95rem; color: inherit; background: transparent;
+                      border: 1px solid var(--rule); border-radius: 6px; padding: 0.55rem 0.8rem; cursor: pointer; }
+    .choices button:hover { border-color: var(--accent); }
+    .choices button:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; }
+    .choices button.right { border-color: var(--ok); background: var(--ok-soft); }
+    .choices button.wrong { border-color: var(--warn); background: var(--warn-soft); }
+    .feedback { font-size: 0.95rem; margin: 0.6rem 0 0; } .feedback:empty { margin: 0; }
+    details { margin-top: 0.75rem; } summary { font-size: 0.85rem; color: var(--accent); cursor: pointer; }
+    details > :not(summary) { margin: 0.5rem 0 0; }
+    footer.closing { margin-top: 3rem; padding-top: 1rem; border-top: 1px solid var(--rule); font-size: 0.9rem; color: var(--muted); }
+    @media (max-width: 32rem) { html { font-size: 17px; } h1 { font-size: 1.75rem; } main { padding-top: 2rem; } }
+    @media print { :root { --bg:#fff; --text:#000; --muted:#444; --rule:#ccc; --accent:#000; --accent-soft:#f2f2f2; --warn:#000; --warn-soft:#f2f2f2; --ok:#000; --ok-soft:#fff; --code-bg:#f2f2f2; }
+      html { font-size: 11.5pt; } main { max-width: none; padding: 0; } nav.toc { display: none; }
+      a[href^="http"]::after { content: " (" attr(href) ")"; font-size: 0.8em; word-break: break-all; }
+      .box, .check, figure, pre { break-inside: avoid; } }
+  </style>
+</head>
+<body>
+<main>
+
+  <header>
+    <div class="kicker">Lesson 1 &middot; 10 minutes</div>
+    <h1>The agent loop: how an LLM uses tools</h1>
+    <p class="lead">By the end of this lesson you can trace a tool-using agent turn by turn and say exactly what makes it stop.</p>
+    <div class="meta">
+      <span>Objective O1: the tool-use loop</span>
+      <span>About 10 minutes</span>
+    </div>
+    <div class="box mission">
+      <span class="label">Why this matters for you</span>
+      <p>No mission is on file yet, so this lesson assumes you want to build AI tools. Every agent, including the tutor you are building, is this loop plus tools.</p>
+    </div>
+  </header>
+
+  <nav class="toc" aria-label="In this lesson">
+    <strong>In this lesson</strong>
+    <ol>
+      <li><a href="#idea">The idea</a></li>
+      <li><a href="#example">An example</a></li>
+      <li><a href="#walk">Walking through it</a></li>
+      <li><a href="#summary">Summary</a></li>
+      <li><a href="#further">Go further</a></li>
+    </ol>
+  </nav>
+
+  <section id="idea">
+    <h2>The idea <span class="section-time">4 min</span></h2>
+    <p>A language model only produces text. It cannot read a file, query a database or check the weather. A <dfn>tool</dfn> is a function your own code provides and describes to the model, so the model can ask for it to be used.</p>
+    <p>The key fact: <strong>the model never runs a tool. It only asks.</strong> Your application runs the tool and reports the result back. The official docs describe it this way: Claude responds with <code>stop_reason: "tool_use"</code> and a <code>tool_use</code> block holding the tool name, a unique id and structured input; your application executes it and sends the result back (<a href="https://platform.claude.com/docs/agents-and-tools/tool-use/how-tool-use-works">How tool use works</a>).</p>
+    <p>That gives a loop, called the <dfn>agent loop</dfn>:</p>
+    <ol>
+      <li>Send the conversation and the tool definitions to the model.</li>
+      <li>Read <code>stop_reason</code>. If it is <code>"tool_use"</code>, run each requested tool in your code.</li>
+      <li>Append the model's reply, then a <code>tool_result</code> message carrying the matching tool id, to the conversation.</li>
+      <li>Send it all again. Repeat until <code>stop_reason</code> is anything other than <code>"tool_use"</code>, usually <code>"end_turn"</code>.</li>
+    </ol>
+    <p>Each trip around the loop is one separate request. The model keeps no memory between requests, so you resend the whole conversation each time.</p>
+
+    <figure>
+      <svg viewBox="0 0 640 230" role="img" aria-labelledby="fig1-title">
+        <title id="fig1-title">The agent loop: the application sends a request, the model replies, and if it asked for a tool the application runs it and sends the result back.</title>
+        <defs>
+          <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+            <path d="M0,0 L10,5 L0,10 z" fill="currentColor"/>
+          </marker>
+        </defs>
+        <g fill="none" stroke="currentColor" stroke-width="1.5">
+          <rect x="20" y="30" width="170" height="60" rx="8"/>
+          <rect x="235" y="30" width="170" height="60" rx="8" style="stroke: var(--accent)"/>
+          <rect x="450" y="30" width="170" height="60" rx="8"/>
+          <rect x="235" y="150" width="170" height="60" rx="8"/>
+          <line x1="190" y1="60" x2="231" y2="60" marker-end="url(#arrow)"/>
+          <line x1="405" y1="60" x2="446" y2="60" marker-end="url(#arrow)"/>
+          <path d="M535,90 L535,180 L409,180" marker-end="url(#arrow)"/>
+          <path d="M235,180 L105,180 L105,94" marker-end="url(#arrow)"/>
+        </g>
+        <g fill="currentColor" font-family="system-ui, sans-serif" font-size="18" text-anchor="middle">
+          <text x="105" y="66">Your request</text>
+          <text x="320" y="66" style="fill: var(--accent)">Model</text>
+          <text x="535" y="60">stop_reason</text>
+          <text x="535" y="82">tool_use?</text>
+          <text x="320" y="186">Run tool</text>
+          <text x="180" y="170" font-size="16">tool_result</text>
+        </g>
+      </svg>
+      <figcaption>Figure 1. The loop runs while the answer is <code>tool_use</code>. Any other stop reason leaves the loop.</figcaption>
+    </figure>
+
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>The model returns a <code>tool_use</code> block naming <code>get_weather</code>. What has happened so far?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="false" data-why="The model cannot run code. Nothing has executed yet.">Claude ran the function and has the result</button></li>
+        <li><button type="button" data-correct="true" data-why="The model only produced a request. Your code must run the tool and send back a result.">Claude asked your code to run the function</button></li>
+        <li><button type="button" data-correct="false" data-why="A tool_use block is a request, not a final answer. The stop_reason says the turn is not finished.">Claude finished and wrote the final answer</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>Claude asked your code to run the function. The model only emits the request; your application executes it.</p>
+      </details>
+    </div>
+
+    <div class="box misconception">
+      <span class="label">A common mix-up</span>
+      <p>"The model calls the tool." It is tempting because the SDK hides the loop and it looks like one step. In fact your code executes the tool, so your code controls permissions, errors and limits. That is also why a loop needs its own cap on iterations: a loop written only as <code>while stop_reason == "tool_use"</code> can spin forever if the model keeps asking.</p>
+    </div>
+  </section>
+
+  <section id="example">
+    <h2>An example <span class="section-time">2 min</span></h2>
+    <p>A shopping assistant has two tools: <code>find_price(item)</code> and <code>get_budget()</code>. The user asks: "Can I afford a keyboard?"</p>
+    <pre><code>Request 1  user: "Can I afford a keyboard?"
+Reply 1    tool_use: find_price("keyboard")        stop_reason: tool_use
+           (your code returns 45)
+Request 2  ...history + tool_result: 45
+Reply 2    tool_use: get_budget()                  stop_reason: tool_use
+           (your code returns 60)
+Request 3  ...history + tool_result: 60
+Reply 3    "Yes, 45 is under your 60 budget."      stop_reason: end_turn</code></pre>
+  </section>
+
+  <section id="walk">
+    <h2>Walking through it <span class="section-time">3 min</span></h2>
+    <div class="box worked">
+      <span class="label">Worked example</span>
+      <ol>
+        <li><strong>Reply 1</strong> ends with <code>tool_use</code>: the model could not answer without a price, so it asked. The loop continues because the stop reason is <code>tool_use</code>.</li>
+        <li><strong>Your code</strong> runs <code>find_price</code> and returns 45 inside a <code>tool_result</code> that repeats the request's tool id. The id lets the model match results to requests.</li>
+        <li><strong>Request 2</strong> carries the full history. Without it the model would not know what it asked.</li>
+        <li><strong>Reply 2</strong> asks for the budget. The model chose this on its own; no code fixed the order. That freedom is what separates an agent from a fixed workflow, where code decides the steps (<a href="https://anthropic.com/engineering/building-effective-agents">Building effective agents</a>).</li>
+        <li><strong>Reply 3</strong> ends with <code>end_turn</code>: the model has enough, so the loop exits and you show the text.</li>
+      </ol>
+      <p>Two tool calls gave three requests: the final answer needs one more request than there are tool calls.</p>
+    </div>
+    <div class="check">
+      <span class="label">Your turn</span>
+      <p>The user asks only "What does a mouse cost?" The model calls <code>find_price</code> once, then answers. How many requests does your loop send, and what is the stop reason of the last reply?</p>
+      <details>
+        <summary>Show a solution</summary>
+        <p>Two requests. Request 1 gets a <code>tool_use</code> reply, request 2 (with the tool result) gets the answer, with <code>stop_reason: "end_turn"</code>. Requests = tool calls + 1 when the tools are called one at a time.</p>
+      </details>
+    </div>
+    <div class="check" data-check>
+      <span class="label">Check yourself</span>
+      <p>Your loop gets <code>stop_reason: "max_tokens"</code>. What should it do?</p>
+      <ul class="choices">
+        <li><button type="button" data-correct="true" data-why="The docs say to exit on any stop reason other than tool_use and handle the outcome; here the reply was cut off.">Exit the loop and handle a cut-off reply</button></li>
+        <li><button type="button" data-correct="false" data-why="Only tool_use means a tool is requested. Looping on anything else can spin forever.">Continue the loop and run the next tool</button></li>
+        <li><button type="button" data-correct="false" data-why="max_tokens is not end_turn. The reply was truncated, so treating it as complete hides the problem.">Treat it as a complete and correct answer</button></li>
+      </ul>
+      <p class="feedback" aria-live="polite"></p>
+      <details>
+        <summary>Show the answer</summary>
+        <p>Exit and handle it. Only <code>tool_use</code> keeps the loop going.</p>
+      </details>
+    </div>
+  </section>
+
+  <section id="summary">
+    <h2>Summary <span class="section-time">1 min</span></h2>
+    <div class="box summary">
+      <ul>
+        <li>The model asks for tools; your code runs them.</li>
+        <li>The loop continues only while <code>stop_reason</code> is <code>"tool_use"</code>, and resends the full history each time.</li>
+        <li>Results go back with the matching tool id.</li>
+        <li>Add an iteration cap so a loop cannot run forever.</li>
+      </ul>
+      <p><strong>Say it in your own words:</strong> explain what happens between two requests in the loop, and who does the work.</p>
+    </div>
+  </section>
+
+  <section id="further">
+    <h2>Go further</h2>
+    <p><strong>Read next:</strong> <a href="https://platform.claude.com/docs/agents-and-tools/tool-use/how-tool-use-works">How tool use works</a>, the official description of the loop and its stop reasons.</p>
+    <ul>
+      <li><a href="https://anthropic.com/engineering/building-effective-agents">Building effective agents</a>: workflows versus agents, and when to choose each.</li>
+      <li><a href="https://platform.claude.com/docs/en/agents-and-tools/tool-use/build-a-tool-using-agent">Build a tool-using agent</a>: a tutorial that builds the loop in code.</li>
+    </ul>
+  </section>
+
+  <footer class="closing">
+    <p>Anything unclear? Ask me in the chat; I can explain any part again, another way, or go deeper.</p>
+    <p>A short quiz on this lesson is ready (quiz 0001): ask me for it when you want to check what stuck.</p>
+  </footer>
+
+</main>
+<script>
+  document.querySelectorAll("[data-check]").forEach(function (box) {
+    var buttons = box.querySelectorAll("button[data-correct]");
+    var out = box.querySelector(".feedback");
+    buttons.forEach(function (button) {
+      button.addEventListener("click", function () {
+        buttons.forEach(function (b) { b.classList.remove("right", "wrong"); });
+        var right = button.getAttribute("data-correct") === "true";
+        button.classList.add(right ? "right" : "wrong");
+        if (out) { out.textContent = (right ? "Yes. " : "Not quite. ") + (button.getAttribute("data-why") || ""); }
+      });
+    });
+  });
+</script>
+</body>
+</html>

@@ -1,0 +1,152 @@
+{
+  "duration_api_ms": 168412,
+  "stop_reason": "end_turn",
+  "session_id": "2f5d2ee0-de52-4988-8757-1ec49e757c67",
+  "total_cost_usd": 0.5628222,
+  "usage": {
+    "input_tokens": 18,
+    "cache_creation_input_tokens": 64862,
+    "cache_read_input_tokens": 341117,
+    "output_tokens": 22174,
+    "output_tokens_details": {
+      "thinking_tokens": 2546
+    },
+    "server_tool_use": {
+      "web_search_requests": 0,
+      "web_fetch_requests": 0
+    },
+    "service_tier": "standard",
+    "cache_creation": {
+      "ephemeral_1h_input_tokens": 64862,
+      "ephemeral_5m_input_tokens": 0
+    },
+    "inference_geo": "global",
+    "iterations": [
+      {
+        "input_tokens": 2,
+        "output_tokens": 583,
+        "cache_read_input_tokens": 70240,
+        "cache_creation_input_tokens": 5248,
+        "cache_creation": {
+          "ephemeral_5m_input_tokens": 0,
+          "ephemeral_1h_input_tokens": 5248
+        },
+        "type": "message"
+      }
+    ],
+    "speed": "standard",
+    "fallback_credit": null
+  },
+  "modelUsage": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 18,
+      "outputTokens": 22174,
+      "cacheReadInputTokens": 341117,
+      "cacheCreationInputTokens": 64862,
+      "webSearchRequests": 0,
+      "costUSD": 0.5153357000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 2546,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 64862,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 55285,
+      "outputTokens": 3916,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 4,
+      "costUSD": 0.0474865,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1125,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "permission_denials": [],
+  "terminal_reason": "completed",
+  "fast_mode_state": "off",
+  "fast_mode_disabled_reason": "sdk_opt_in_required",
+  "subagent_stats": {
+    "spawned": 0,
+    "requested": {
+      "background": 0,
+      "foreground": 0,
+      "unset": 0
+    },
+    "started_in_background": 0,
+    "max_depth": 0,
+    "spawned_by_subagents": 0,
+    "completed": 0,
+    "failed": 0,
+    "killed": {
+      "parent": 0,
+      "user": 0,
+      "system": 0
+    },
+    "refused": {
+      "depth_limit": 0,
+      "concurrency_limit": 0,
+      "budget": 0
+    },
+    "by_type": {}
+  },
+  "safety_stops": 0,
+  "is_error": false,
+  "num_turns": 23,
+  "subtype": "success",
+  "api_error_status": null,
+  "result": "The 30-minute lesson on O3 is written, with a quiz ready behind it. I haven't opened the lesson in a browser or run any word-count or link check, so the length and links are unchecked.\n\n**Lesson:** `lessons/0001-context-and-memory-in-an-agent.html`\n\nIt covers:\n- the context window and what fills it\n- what is kept between steps: the program's message list, re-sent on every call\n- why that makes the window drive cost\n- what is kept between sessions: nothing unless the program saves it\n- retrieval over the manuals, and notes the agent writes itself\n\nIt ends on a worked example that places each piece of the makerspace assistant's information in the system prompt, the saved store, a tool, retrieval or the message list. It also has recall questions, nine practice checks, two figures and a \"your turn\" task.\n\n**Quiz:** quiz 0002 is ready, with its key in `keys/0002.json`. Ask me for it when you want to take it. Quiz 0001 from the agent-loop session is still ungraded.\n\n**Other files written:**\n- `cheatsheets/0001-context-and-memory.html`\n- `RESOURCES.md`, listing the Anthropic sources I cited\n- a note in `NOTES.md`\n\n**Caveats:**\n- **Illustrative numbers:** the lesson's cost example ($3 per million input tokens, 60,000-token manual) is invented and labelled that way. Check your provider's real pricing before you put numbers in the design review.\n- **No community link:** I couldn't verify one in this session, so I left it out and listed it as a gap in `RESOURCES.md`.\n\nQuestion for you: do you want the next lesson to cover when a fixed workflow beats an agent, or splitting work across several agents? I'd start with workflow versus agent.",
+  "ttft_ms": 1099,
+  "type": "result",
+  "duration_ms": 157560,
+  "uuid": "075baaf4-16bf-4d32-b1a9-311e8d19cb6a",
+  "ttft_stream_ms": 840,
+  "time_to_request_ms": 378,
+  "first_content_frame_ms": 840,
+  "queued_turn_count": 0,
+  "result_index": 0,
+  "model_usage_since_last_result": {
+    "claude-sonnet-5-5": {
+      "inputTokens": 18,
+      "outputTokens": 22174,
+      "cacheReadInputTokens": 341117,
+      "cacheCreationInputTokens": 64862,
+      "webSearchRequests": 0,
+      "costUSD": 0.5153357000000001,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 2546,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 64862,
+      "canonicalModel": "claude-sonnet-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    },
+    "claude-haiku-5-5": {
+      "inputTokens": 55285,
+      "outputTokens": 3916,
+      "cacheReadInputTokens": 0,
+      "cacheCreationInputTokens": 0,
+      "webSearchRequests": 4,
+      "costUSD": 0.0474865,
+      "contextWindow": 1000000,
+      "maxOutputTokens": 128000,
+      "thinkingTokens": 1125,
+      "cacheCreationEphemeral5mInputTokens": 0,
+      "cacheCreationEphemeral1hInputTokens": 0,
+      "canonicalModel": "claude-haiku-5-5",
+      "provider": "firstParty",
+      "costBasis": "list"
+    }
+  },
+  "credential_expires_at": "2026-11-18T05:44:53.975Z"
+}

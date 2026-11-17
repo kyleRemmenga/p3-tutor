@@ -46,13 +46,85 @@ TODO: your reading of the baseline.
 Name the rounds that built this step, such as `c1-skills` Rounds 1 to 4, and the inventory entries of the skills they added; the trail from thoughts to change to outcome is already in `reviews/` and `reviews/components.md`, so do not retell it here.
 Then what you put in `PREFERENCES.md`, and anything about how the four skills work together that no single inventory entry says.
 
-TODO: the rounds and entries, your preferences, and how the skills fit together.
+The rounds that built this step were from c1-skills and this took a total of 6 rounds. Generally I was happy with how the skills progressed. typically I would name a specific change or it would just be able to deduce it from my preferences. After I had named a change for the most part it would be fixed in a single round. However, cosmetic changes like graphs and the diagrams as well as the colors from the lesson skill were hard to change. These changes specifically took several rounds of asking the builder to fix them before they eventually were. Now that they are touched up, I think they look great and I enjoy the feel of the lessons quite a bit.
 
 ### Your review, the objective checks and the cost
 
 Paste `uv run p3 report --configs c0-baseline,c1-skills`: the objective checks, the cost per job, and your ratings.
 
-TODO: paste the report tables.
+## Results on agent-architecture
+
+Scored full runs (quick runs and --only runs left out); each cell is the mean over the runs, with the range in brackets.
+
+### Quality
+
+| config | runs | teach facts | teach misconc. | length ratio | dead links | key agreement | wrong keys | ambiguous items | verdict agreement | false wrong | misconc. hit | leaks | behavior met |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.00 | 0 | 0.63 (0.59-0.70) | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.61 (0.33-0.83) |
+| `c1-skills` | 1 | 1.00 | 0 | 0.64 | 0 | 1.00 | 0 | 0 | 1.00 | 0.00 | 1.00 | 0 | 0.33 |
+
+Teach facts, key agreement, verdict agreement, false wrong, misconception hit and behavior met are shares (0 to 1); misconceptions, dead links, wrong keys, ambiguous items and leaks are counts per run.
+A dash means no run could be scored on that check, and n= says how many of the runs could.
+A job that failed counts against the config: no lesson scores 0 teach facts, no quiz and key 0 key agreement, a missing grades file disagrees on every item, and a tutor scenario with no reply is not met; leaks need a reply to check, so such a scenario is left out of them.
+The length ratio is a rough reading-time estimate (visible words / 150) over the minutes requested; 0.6 to 1.5 counts as on length.
+
+### Cost: teach
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 478.5k (353.7k-570.6k) | 23.2k (21.3k-25.6k) | 2.7 (2.6-2.9) | 0.3 (0-1) | 0.50 (0.48-0.51) |
+| `c1-skills` | 1 | 487.4k | 26.1k | 2.6 | 0 | 0.56 |
+
+### Cost: quiz
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 151.2k (135.6k-181.9k) | 5.3k (4.6k-5.8k) | 0.9 (0.8-1.0) | 0 | 0.18 (0.17-0.20) |
+| `c1-skills` | 1 | 129.0k | 6.0k | 0.8 | 0 | 0.18 |
+
+### Cost: grade
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 272.4k (270.9k-273.4k) | 6.7k (6.6k-6.8k) | 1.0 (1.0-1.1) | 0 | 0.32 (0.31-0.33) |
+| `c1-skills` | 1 | 243.9k | 6.3k | 0.7 | 0 | 0.28 |
+
+### Cost: tutor
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 627.3k (589.7k-677.0k) | 10.1k (9.8k-10.3k) | 2.4 (2.3-2.4) | 0 | 0.69 (0.68-0.70) |
+| `c1-skills` | 1 | 419.8k | 6.7k | 1.3 | 0 | 0.44 |
+
+### Cost: all jobs
+
+| config | runs | tokens | output tokens | minutes | subagents | list-price $ |
+|---|---:|---:|---:|---:|---:|---:|
+| `c0-baseline` | 3 | 1.53M (1.35M-1.64M) | 45.2k (43.6k-47.8k) | 7.0 (6.8-7.3) | 0.3 (0-1) | 1.70 (1.67-1.72) |
+| `c1-skills` | 1 | 1.28M | 45.1k | 5.5 | 0 | 1.47 |
+
+Costs are per run, summed over the job's scenarios; list-price $ is the list-price equivalent, not what you pay on a subscription.
+
+## Your ratings
+
+Your ratings from 1 to 5 in the major reviews (reviews/<step>.md), which review full runs on the shared topic; a dash means no rating there yet, one that p3 check does not accept, or a job that step does not review (Tutor in c2-review; Quiz, Feedback and Tutor in c3-split).
+
+| job | criterion | c1-skills | c2-review | c3-split | final |
+|---|---|---:|---:|---:|---:|
+| Lesson | Technical correctness and facts | 5 | - | - | - |
+| Lesson | Pedagogy | 5 | - | - | - |
+| Lesson | Alignment with the learning goal | 5 | - | - | - |
+| Lesson | Overall quality | 5 | - | - | - |
+| Quiz | Difficulty | 4 | - | - | - |
+| Quiz | Coverage of the lesson's core | 5 | - | - | - |
+| Quiz | Wording and possible misreadings | 5 | - | - | - |
+| Quiz | Writing quality | 5 | - | - | - |
+| Quiz | Alignment with the learning goal | 5 | - | - | - |
+| Feedback | Useful | 5 | - | - | - |
+| Feedback | Explains enough | 5 | - | - | - |
+| Feedback | Personalized to how I like things explained | 5 | - | - | - |
+| Tutor | Guardrails | 5 | - | - | - |
+| Tutor | Personalization | 5 | - | - | - |
 
 ### What the step bought and what it cost
 

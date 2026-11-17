@@ -1,0 +1,45 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The difference is who owns the control flow. In A the code fixes the sequence (extract, check calendar, reply), so it is a workflow even though a model is called twice. In B the model chooses each next step at run time, so it is an agent. Calling a model more than once (a) does not make an agent; thinking the code 'picks the tool' (b) misreads a hard-coded call as a decision; the number of tools (d) does not decide it.",
+      "distractors": {"a": "M7", "b": "M8", "d": "M9"}
+    },
+    {
+      "id": "q2",
+      "answer": "a",
+      "rationale": "The branch (free versus taken) is written in the code as an if/else, so the code owns the control flow and the model only writes the reply. A branch or a reaction to a tool result is still a path the developer laid out in advance. Calling it an agent because it branches (b, c) is M8; thinking the number of model calls decides it (d) is M7.",
+      "distractors": {"b": "M8", "c": "M8", "d": "M7"}
+    },
+    {
+      "id": "q3",
+      "answer": 360,
+      "tolerance": 0,
+      "rationale": "Agent: 120 x 5 = 600 calls per day. Workflow: 120 x 2 = 240 calls per day. The difference is 600 - 240 = 360. Answering 600 or 240 reports one side instead of the difference."
+    },
+    {
+      "id": "q4",
+      "answer": "d",
+      "rationale": "When the steps are known in advance, a fixed workflow runs them directly: fewer model calls, the same path every time and a path you can test step by step. An agent spends extra calls letting the model rediscover a sequence you already know, and may vary or skip a step. Option a is the belief that agents are strictly better (M10); b is false, since workflows can call models (M7); c is wrong because predictability and testability also favor the workflow.",
+      "distractors": {"a": "M10", "b": "M7", "c": "M10"}
+    },
+    {
+      "id": "q5",
+      "answer": "Booking confirmation (or any task with the same known steps every time), because the steps are known in advance, so code can run them directly with fewer model calls and more predictable behavior.",
+      "accepted": [
+        "Answering a question from a manual, because it is always search the manual then write the answer, so the fixed order is cheaper and more predictable",
+        "Checking a student's training record before booking, because the steps never change, so a workflow is cheaper and more reliable",
+        "Any task whose steps are known and the same every time, because code can run the steps, which is cheaper and more predictable than an agent"
+      ],
+      "rationale": "Full credit needs a task whose steps are known in advance and a reason tied to that: predictability, lower cost or easier testing. A task named without a reason, or a reason with an open-ended task (such as troubleshooting a failed print), is partial or wrong, since open-ended tasks are where an agent earns its extra cost."
+    },
+    {
+      "id": "q6",
+      "answer": "b",
+      "rationale": "A cap and a fixed tool list are guardrails around the loop, not the sequence itself. Inside them the model picks each step and decides when to stop, so the model owns the control flow and the system is an agent. Treating anything pre-written as fixed flow (a) or the cap as control flow (c) confuses boundaries with sequencing (M11); the cap size (d) does not change who chooses the steps.",
+      "distractors": {"a": "M11", "c": "M11", "d": "M9"}
+    }
+  ]
+}

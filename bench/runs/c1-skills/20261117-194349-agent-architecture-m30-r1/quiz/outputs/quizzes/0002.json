@@ -1,0 +1,68 @@
+{
+  "id": "0002",
+  "objective": "O4",
+  "title": "Workflows and agents: who owns the control flow",
+  "items": [
+    {
+      "id": "q1",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Two designs answer \"Is the laser cutter free tomorrow?\". Design A: Python code calls the model to pull the machine and date out of the question, always calls check_calendar next, then calls the model again to write the reply. Design B: the model is given check_calendar, search_manuals and check_training_record, and picks its own next step each turn until it writes the answer. Which statement is correct?",
+      "options": [
+        {"id": "a", "text": "Both are agents, because both call a language model more than once and one of them reaches a tool."},
+        {"id": "b", "text": "A is the agent, since the Python code is smart enough to pick the right tool for each question; B just lets the model improvise."},
+        {"id": "c", "text": "A is a workflow, because the code fixes the order of steps in advance; B is an agent, because the model decides the order at run time."},
+        {"id": "d", "text": "A is a workflow only because it uses one tool; if it used three tools, it would become an agent."}
+      ]
+    },
+    {
+      "id": "q2",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "A booking feature works like this. Python code calls check_calendar for the requested slot. If the slot is free, the code calls book_slot. If it is taken, the code calls find_next_free_slot. The model is called once at the end to write a friendly reply from whatever happened. Is this a workflow or an agent?",
+      "options": [
+        {"id": "a", "text": "A workflow: the code makes the branching decision using the calendar result, and the model only writes the wording."},
+        {"id": "b", "text": "An agent: it chooses between book_slot and find_next_free_slot, and anything that chooses between actions is deciding for itself."},
+        {"id": "c", "text": "An agent: it uses three tools and reacts to what the calendar returns, which a fixed pipeline cannot do."},
+        {"id": "d", "text": "A workflow, but only because the model is called a single time; with two model calls it would become an agent."}
+      ]
+    },
+    {
+      "id": "q3",
+      "type": "numeric",
+      "objective": "O4",
+      "stem": "Your sponsor's budget is measured in model calls. A fixed workflow for answering a manual question always makes 2 model calls per request. An agent version of the same feature averages 5 model calls per request. The makerspace expects 120 requests per day. Counting only the number of calls, how many more model calls per day does the agent version make than the workflow?",
+      "unit": "model calls per day"
+    },
+    {
+      "id": "q4",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "In a design review, a teammate says: \"The agent is the more advanced design, so we should build every part of the assistant as an agent.\" The booking-confirmation step always runs the same four actions in the same order. Which reply is the strongest?",
+      "options": [
+        {"id": "a", "text": "Agree, because an agent can always do whatever a fixed sequence does, so nothing is lost by choosing it."},
+        {"id": "b", "text": "Agree for now, since a workflow cannot call a model, and every part of the assistant needs one."},
+        {"id": "c", "text": "Disagree only on cost: a workflow is cheaper, but the two behave equally reliably, so quality is not a factor."},
+        {"id": "d", "text": "Disagree: when the steps are known ahead of time, code can run them directly, which costs fewer model calls, behaves the same way each time and is easier to test."}
+      ]
+    },
+    {
+      "id": "q5",
+      "type": "short",
+      "objective": "O4",
+      "stem": "Name one kind of task in the makerspace assistant where you would choose a fixed workflow over an agent, and give the reason in one sentence."
+    },
+    {
+      "id": "q6",
+      "type": "mcq",
+      "objective": "O4",
+      "stem": "Your team builds an assistant whose tool list is fixed in the code and whose loop is capped at 8 steps. Within that cap, the model chooses which tool to call at every step and when to stop. A teammate says: \"Because we hard-coded the tools and the cap, this is really a workflow.\" What is the best response?",
+      "options": [
+        {"id": "a", "text": "Correct, because anything the programmers wrote ahead of time, including the tools and limits, counts as fixed control flow."},
+        {"id": "b", "text": "Incorrect: the code only sets the boundaries; the model still chooses the sequence of steps, so it is an agent."},
+        {"id": "c", "text": "Correct, because a step cap means the code decides when the run ends, and that is control flow."},
+        {"id": "d", "text": "Incorrect, but only because 8 is a large number of steps; with a cap of 2 or 3 it would be a workflow."}
+      ]
+    }
+  ]
+}

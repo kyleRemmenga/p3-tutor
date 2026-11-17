@@ -1,0 +1,35 @@
+{
+  "id": "0002",
+  "items": [
+    {
+      "id": "q1",
+      "answer": "c",
+      "rationale": "The model has no memory outside the text in the current call; a new session starts empty, so the program must load a saved record or the model must ask. Option a shows M1 (the model remembers on its own); d shows M2 (a bigger window carries memory across sessions).",
+      "distractors": {"a": "M1", "b": "M1", "d": "M2"}
+    },
+    {
+      "id": "q2",
+      "answer": 16400,
+      "tolerance": 0,
+      "rationale": "Call 1 sends 1,100; call 2 sends 3,100; call 3 sends 5,100; call 4 sends 7,100. The total is 16,400. Counting each result only once (7,100) shows that results are not re-sent (M3)."
+    },
+    {
+      "id": "q3",
+      "answer": "a",
+      "rationale": "Load only what this student needs: one short record. Everything loaded is re-sent and paid for on every call, and manuals belong in retrieval, not session start. Option d shows M1.",
+      "distractors": {"d": "M1"}
+    },
+    {
+      "id": "q4",
+      "answer": "The whole history is re-sent as input on every call, so earlier tokens are paid for again each time.",
+      "accepted": ["because the whole history is sent again every call", "the program re-sends the entire message list on each call so you pay for those tokens each time", "all earlier messages are included in every call's input and billed again"],
+      "rationale": "The model keeps nothing between calls, so the program re-sends the full list, and input tokens are billed on each call. Cost grows with steps times window size. A wrong answer that says the model must think harder or the longer text is slower to read shows M3."
+    },
+    {
+      "id": "q5",
+      "answer": "b",
+      "rationale": "Chunks cut out of a manual lose which machine they belong to; putting the machine name and heading in each chunk (or filtering by machine) lets retrieval and the model tell them apart. A larger window or more chunks adds tokens without fixing the ambiguity, and M2 is the idea that a larger window fixes it.",
+      "distractors": {"a": "M2", "d": "M2"}
+    }
+  ]
+}

@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s2",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Correct. The loop of choose action, run it, feed the result back is the structure that makes an agent; prompts and model size only change what a single call can do."
+    },
+    {
+      "id": "q2",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Correct. The model's output is only a structured request naming check_calendar and its arguments. The program runs the tool and returns the result."
+    },
+    {
+      "id": "q3",
+      "verdict": "wrong",
+      "misconception": "M6",
+      "feedback": "Wrong. You picked 'left to run longer, it will eventually fix the bug', which assumes an agent needs no stopping condition. It is tempting because more steps sound like more chances. But the agent is getting the same failing result every time, so step 41 will look like step 40, and it will repeat the edit forever while costing tokens. A step limit in the program ends the loop and reports back to a person. Larger context doesn't help, because all 40 steps already fit."
+    },
+    {
+      "id": "q4",
+      "verdict": "partial",
+      "misconception": "M4",
+      "feedback": "The number 4 is right, but the reason is wrong. You wrote that the model 'runs' check_calendar, search_manuals and check_training_record itself. It doesn't. Each call ends with a request for one tool, and the program runs it and calls the model again with the result. The count is 4 because the model gets 4 inputs: the question plus 3 tool results. Each input triggers a separate call, and the last call writes the answer."
+    },
+    {
+      "id": "q5",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Correct. The result goes back in as the next input and the model uses it to decide its next step, which covers both what happens and why. The group-chat analogy fits. Add that the program is what sends the message and calls the model again."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The name is part of it, but not enough. The model chooses from the full tool description the program gives it: the name, what the tool does, and the parameters it takes. A name alone can mislead. For example, a tool called check_calendar could cover only one machine, and only its description says so. Write clear descriptions for your tools, because the model relies on them."
+    }
+  ],
+  "summary": "You have the agent loop down, and you know the model's output is a request, not a result. Work next on who does what: the program runs tools, and the model only requests them and sees descriptions. Your q4 reasoning slipped back to 'the model runs the tools', and q3 showed that an agent needs a stopping condition. Step to take: redraw the laser-cutter trace with two columns, model and program, and mark which side does each step, including where the step limit lives."
+}

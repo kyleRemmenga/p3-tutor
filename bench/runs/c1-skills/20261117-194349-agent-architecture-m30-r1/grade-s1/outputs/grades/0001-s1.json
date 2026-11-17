@@ -1,0 +1,43 @@
+{
+  "quiz": "0001",
+  "submission": "s1",
+  "items": [
+    {
+      "id": "q1",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Correct. The loop of choose an action, run it, feed the result back is the structure that separates an agent from one call, however long the prompt or large the model."
+    },
+    {
+      "id": "q2",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Wrong. The model only outputs text: a structured request naming check_calendar with the laser cutter and tomorrow's date as arguments (option c). The program around it receives that request, runs the tool, and sends the result back. It is tempting to think the model opens the booking system itself because the final answer arrives as if it had looked. But the model has no access to your systems; it can only ask."
+    },
+    {
+      "id": "q3",
+      "verdict": "correct",
+      "misconception": null,
+      "feedback": "Correct. The agent is repeating itself with the same failing feedback, so what it needs is a stopping condition in the program, such as a step limit, that hands the problem back to a person."
+    },
+    {
+      "id": "q4",
+      "verdict": "wrong",
+      "misconception": "M4",
+      "feedback": "Wrong: the answer is 4, not 1. Each model call ends with one tool request or the final answer, so three tool requests plus the final answer is four calls. You wrote that the model runs the 3 tools itself, which is the same belief as in q2. The program runs the tools between calls, and each result goes back in as new input to a fresh model call. For the laser cutter question: call 1 outputs a calendar request, the program runs it, call 2 sees the result and outputs a manuals search, and so on."
+    },
+    {
+      "id": "q5",
+      "verdict": "partial",
+      "misconception": null,
+      "feedback": "The what is right: the program sends the result back to the model. The why is missing. It does this so the model can use the result to decide its next step or write the final answer. The model can't see the tool's output otherwise, because the result only reaches it as part of its next input. Always state the purpose as well as the action."
+    },
+    {
+      "id": "q6",
+      "verdict": "partial",
+      "misconception": "M3",
+      "feedback": "The first half is right: the program sends the model a list of tools with names and descriptions, and it picks the one that fits. The second half is wrong: the model does not remember earlier sessions on its own. Each call starts with only what is in its input, so memory between sessions has to be stored by the program and put back into the input. The choice comes from the descriptions it is given, not from remembered past picks."
+    }
+  ],
+  "summary": "You have the shape of the agent loop and the need for a stopping condition, and you know the model chooses tools from descriptions it is given. The main thing to fix is who does what: the model only outputs requests as text, and the program runs the tools and calls the model again for each step. Related is the belief that the model remembers by itself, which it doesn't. Next step: redraw your laser cutter trace as a table with one row per model call, columns for what the model outputs and what the program does, and count the rows. That also sets up the context and memory topic."
+}

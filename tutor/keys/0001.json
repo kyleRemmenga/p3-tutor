@@ -1,0 +1,18 @@
+{
+  "id": "0001",
+  "items": [
+    {"id": "q1", "answer": "c",
+     "rationale": "The model only emits a tool_use request; the application runs the tool and returns the result.",
+     "distractors": {"a": "M1", "b": "M1"}},
+    {"id": "q2", "answer": 4, "tolerance": 0,
+     "rationale": "Three requests end in tool_use replies, and a fourth, carrying the third result, gets the final answer: tool calls + 1."},
+    {"id": "q3", "answer": "b",
+     "rationale": "Each request is stateless, so the full history is resent, and the tool_result carries the id of the request it answers.",
+     "distractors": {"a": "M2", "d": "M2"}},
+    {"id": "q4", "answer": "To stop a loop that never reaches end_turn from running forever and burning cost and time",
+     "accepted": ["prevent infinite loops", "avoid an infinite loop", "limit cost", "stop runaway loops", "the model might keep calling tools forever", "to prevent runaway cost"],
+     "rationale": "The loop continues while stop_reason is tool_use; a model or malformed tool can keep it there, so a cap bounds cost and time."},
+    {"id": "q5", "answer": "a",
+     "rationale": "Any stop reason other than tool_use ends the loop; end_turn means the model finished and its text is the answer."}
+  ]
+}
